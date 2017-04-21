@@ -1,0 +1,2 @@
+class Cuentum < ApplicationRecord
+end
