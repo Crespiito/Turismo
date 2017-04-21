@@ -1,3 +1,30 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.titulo{ 
+	font-size: 5em;
+}
+
+.principal {
+    background-color: #e6ff99;
+}
+
+.bd-pageheader {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    background-color: #cc9966;
+}
+
+.panel-heading {
+    color: #333333;
+    background-color: rgba(210, 255, 77, 0.83);
+    border-color: #ddd;
+}
+
+.panel-body {
+    border-color: #ddd;    
+}
