@@ -1,2 +1,0 @@
-class Intere < ApplicationRecord
-end

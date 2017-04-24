@@ -6,10 +6,10 @@ class CreateUsuarios < ActiveRecord::Migration[5.0]
       t.string :Direccion
       t.string :Ciudad
       t.string :Pais
-      t.integer :Telefono
+      t.string :Telefono
       t.string :Correo
       t.string :Genero
-      t.integer :Edad
+      t.string :Edad
 
       t.timestamps
     end

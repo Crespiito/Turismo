@@ -6,10 +6,10 @@ one:
   Direccion: MyString
   Ciudad: MyString
   Pais: MyString
-  Telefono: 1
+  Telefono: MyString
   Correo: MyString
   Genero: MyString
-  Edad: 1
+  Edad: MyString
 
 two:
   DNI: 1
@@ -17,7 +17,7 @@ two:
   Direccion: MyString
   Ciudad: MyString
   Pais: MyString
-  Telefono: 1
+  Telefono: MyString
   Correo: MyString
   Genero: MyString
-  Edad: 1
+  Edad: MyString
