@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'login/ingreso'
+
   root 'home#index'
 
   get 'home/index'
