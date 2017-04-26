@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   
   #GET /home
   def index
-  	render :index
+  	#render :index
   end
 
   #GET /home/new
@@ -12,7 +12,6 @@ class HomeController < ApplicationController
 
   #POST /home
   def create
-  	flash[:notice] = "entre al def create"
   	#@Account = Account.new(Correo: params[:Account][:Correo], Contraseña: params[:Acconut][:Contraseña])
   	#if @Account.save
   	#	flash[:notice] = "e capturado los datos correctamente"
