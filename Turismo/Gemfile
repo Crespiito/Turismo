@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'bootstrap-sass'
 
+gem 'devise'
+
 gem 'autoprefixer-rails'
 
 

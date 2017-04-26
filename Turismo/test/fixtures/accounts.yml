@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  DNI: 1
   Correo: MyString
-  Password: MyString
-  cargo: MyString
+  Contraseña: MyString
+  Cargo: MyString
 
 two:
-  DNI: 1
   Correo: MyString
-  Password: MyString
-  cargo: MyString
+  Contraseña: MyString
+  Cargo: MyString
