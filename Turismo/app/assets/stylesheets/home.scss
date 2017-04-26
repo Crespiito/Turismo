@@ -2,9 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 
-.titulo{ 
-	font-size: 5em;
+#titulo {
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+}
+
+body.bodyS{
+	background-color: #E9F2B9;
+}
+
+h1.titulo{
+	color: #484835;
 }
 
 .principal {
@@ -27,4 +37,14 @@
 
 .panel-body {
     border-color: #ddd;    
+}
+
+.baner{
+	background-color: #B8D381;	
+	box-sizing: border-box;
+	margin-bottom: 40px;
+	}
+
+div.Bloque{
+	    margin-bottom: 40px;
 }

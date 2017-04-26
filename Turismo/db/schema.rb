@@ -15,14 +15,20 @@ ActiveRecord::Schema.define(version: 20170424172228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", primary_key: "Correo", id: :string, force: :cascade do |t|
-    t.integer "DNI"
-    t.string  "Password"
-    t.string  "cargo"
+  create_table "accounts", force: :cascade do |t|
+    t.integer  "DNI"
+    t.string   "Correo"
+    t.string   "Password"
+    t.string   "cargo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "interests", primary_key: "DNI", id: :integer, force: :cascade do |t|
-    t.string "Interes"
+  create_table "interests", force: :cascade do |t|
+    t.integer  "DNI"
+    t.string   "interes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "usuarios", force: :cascade do |t|
