@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :home, only: [:index]
+  get 'login/ingreso'
 
   devise_for :users
-  #resources :'home'
   
   root 'home#index'
   
