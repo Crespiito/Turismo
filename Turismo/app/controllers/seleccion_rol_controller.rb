@@ -1,0 +1,2 @@
+class SeleccionRolController < ApplicationController
+end

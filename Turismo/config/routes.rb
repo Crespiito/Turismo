@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   resources :home, only: [:index]
-  get 'login/ingreso'
-
   devise_for :users
   
   root 'home#index'
   
-  post 'devise/home/index'
+  #post 'devise/home/index'
 
   get 'home/index'
+
+  get 'seleccion_rol/rol'
 
   get 'home/new', to: 'home#new', as: 'Account'
   #post 'home/new'
