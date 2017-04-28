@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource_or_scope)
-  	 seleccion_rol_rol_path
+  	if user_signed_in?
+  		seleccion_rol_rol_path
+  	else
+  		home_index_path
+  	end
   end
 end

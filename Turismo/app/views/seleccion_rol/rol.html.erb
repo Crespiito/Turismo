@@ -21,8 +21,9 @@
 			</div>
 			<% if user_signed_in? %>
 			<div class="col-md-1 banner-btn">
+				<br>
 				<div id="titulo">
-				<%= button_to 'Salir' ,destroy_user_session_path , :method => :delete ,class:"btn btn-default) btn-lg" %>
+				<%= button_to 'Salir' ,destroy_user_session_path , :method => :delete ,class:"btn btn-default btn-lg" %>
 				<!--<h2 id="titulo">Boton1</h2>-->
 				</div> 
 				<!--<h2 id="titulo">Boton2</h2>-->
@@ -30,5 +31,32 @@
 			<%end%>
 		</div>
 	</div>
+</div>
+<div class="container-fluid">
+ <div class="row">
+  	<div class="col-md-6 form-group">
+    	<label for="exampleSelect2">Example multiple select</label>
+    	<select multiple class="form-control" id="exampleSelect2">
+      	<option>1</option>
+      	<option>2</option>
+      	<option>3</option>
+      	<option>4</option>
+      	<option>5</option>
+    	</select>
+  	</div>
+  	<div class="col-md-2 col-md-offset-2">
+  		<div class="row container-fluid banner-btn">
+    	<button class="btn btn-default btn-lg" id="titulo">agregar  </button>
+    	</div>
+    	<div class="row container-fluid banner-btn">
+    	<button class="btn btn-default btn-lg" id="titulo">modificar</button>
+    	</div>
+    	<div class="row container-fluid banner-btn">
+    	<button class="btn btn-default btn-lg" id="titulo">eliminar </button>
+    	</div>
+  	</div>
+
+ </div>
+</div> 
 </body>
 </html>
