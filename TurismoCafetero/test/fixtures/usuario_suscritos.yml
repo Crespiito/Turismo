@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  IdSuscrito: MyString
+  DNI: MyString
+  Correo: MyString
+  Password: MyString
+  Aprobado: 1
+  Activo: 1
+
+two:
+  IdSuscrito: MyString
+  DNI: MyString
+  Correo: MyString
+  Password: MyString
+  Aprobado: 1
+  Activo: 1

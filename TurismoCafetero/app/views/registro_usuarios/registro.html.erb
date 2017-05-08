@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <body class = "bodyS">
+
+    <div calss ="row" >
+      <div class = "container-fluid" >
+        <div class= "container-fluid baner">
+          <div class="row"> 
+              <div class="col-xs-5 col-md-6 col-lg-6">
+                <h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row"> 
+
+      <div class="container-fluid">
+
+        <div class ="form-grup"> 
+            <%= form_for(:registro, url: {:action => :create}) do |f| %>
+
+              <div class="row">
+
+                <div class="container-fluid">
+
+                  <div class="col-xs-12 col-md-6 col-lg-6">
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :DNI %><br />
+                        <%= f.text_field :DNI, autofocus: true ,class:"form-control" %>
+                      </div>
+                      
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :nombre %><br />
+                        <%= f.text_field :nombre, autofocus: true ,class:"form-control" %>
+                      </div> 
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :apellido %><br />
+                        <%= f.text_field :apellido, autofocus: true ,class:"form-control" %>
+                      </div>
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :direccion %><br />
+                        <%= f.text_field :direccion, autofocus: true ,class:"form-control" %>
+                      </div>
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :telefono %><br />
+                        <%= f.text_field :telefono, autofocus: true ,class:"form-control" %>
+                      </div>
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :email %><br />
+                        <%= f.email_field :email, autofocus: true ,class:"form-control" %>
+                      </div>  
+                  </div>
+
+                  <div class="col-xs-12 col-md-6 col-lg-6">
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :ciudad %><br />
+                        <%= f.text_field :ciudad, autofocus: true ,class:"form-control" %>
+                      </div>
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :pais %><br />
+                        <%= f.text_field :pais, autofocus: true ,class:"form-control" %>
+                      </div>
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :edad %><br />
+                        <%= f.text_field :edad, autofocus: true ,class:"form-control" %>
+                      </div>
+
+                      <div class="field " id= "Llogin-sm">
+                        <%= f.label :genero %><br />
+                        <%= select_tag :genero, options_for_select([ "Masculino", "Femenino" ]) %>
+                      </div>
+
+                       <div class="field " id= "Llogin-sm">
+                        <%= f.label :rol %><br />
+                        <%= select_tag :rol, options_for_select([ "Suscrito", "Administrador" ]) %>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <br>
+                  <center><div class="actions" id= "Llogin-md">
+                      <%= f.submit "Suscribirse" ,class:"btn btn-default btn-lg"%>
+                        <a type="button" class="btn btn-default btn-lg" href="http://localhost:3000/">Regresar</a>
+                      <% end %>
+                  </div> </center>
+                  
+                  <% if @UsuarioGeneral %>
+                      <% if @UsuarioGeneral.errors.any? %>
+                        <ul>
+                          <% @UsuarioGeneral.errors.each do |atributo, mensaje| %>
+                            <li> <%= mensaje %> </li>
+                        </ul>
+                      <% end %>
+                  <% end %>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+module VistaRootHelper
+end

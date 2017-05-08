@@ -1,0 +1,2 @@
+module VistaSuscritoHelper
+end

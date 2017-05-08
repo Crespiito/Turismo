@@ -1,0 +1,2 @@
+module IngresoHelper
+end

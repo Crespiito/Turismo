@@ -1,0 +1,17 @@
+                    Prefix Verb URI Pattern                           Controller#Action
+         vista_admin_admin GET  /vista_admin/admin(.:format)          vista_admin#admin
+           vista_root_root GET  /vista_root/root(.:format)            vista_root#root
+         elegir_rol_elegir GET  /elegir_rol/elegir(.:format)          elegir_rol#elegir
+registro_usuarios_registro GET  /registro_usuarios/registro(.:format) registro_usuarios#registro
+                           POST /registro_usuarios/registro(.:format) registro_usuarios#registro
+                           POST /vista_root/root(.:format)            vista_root#root
+                           POST /vista_admin/admin(.:format)          vista_admin#admin
+   vista_suscrito_suscrito POST /vista_suscrito/suscrito(.:format)    vista_suscrito#suscrito
+                           POST /elegir_rol/elegir(.:format)          elegir_rol#elegir
+           ingreso_session POST /ingreso/session(.:format)            ingreso#session
+                           GET  /ingreso/session(.:format)            ingreso#session
+                home_index POST /home/index(.:format)                 home#index
+                           GET  /home/index(.:format)                 home#index
+                   ingreso POST /ingreso(.:format)                    ingreso#create
+         registro_usuarios POST /registro_usuarios(.:format)          registro_usuarios#create
+                      root GET  /                                     home#index

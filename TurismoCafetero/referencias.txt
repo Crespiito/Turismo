@@ -1,0 +1,11 @@
+http://codehero.co/ruby-on-rails-desde-cero-sesiones/
+
+http://www.guiasrails.es/active_record_validations.html
+
+http://rubysur.org/introduccion.a.rails/capitulos/puesta_en_marcha/agregando_validaciones.html
+
+http://www.rubydoc.info/docs/rails/Object%3Atry
+
+http://fernando-gaitan.com.ar/ruby-on-rails-parte-14-crud-y-rest/
+
+http://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-exists-3F
