@@ -36,14 +36,16 @@
       <br>
         <div id="titulo">
           <% if session[:sus] or session[:admin] or session[:root] %>
+            <%session.delete(:email) %>
+            <%session.delete(:admin) %>
+            <% session.delete(:sus) %>
+            <% session.delete(:root) %>
             <%= button_to 'Salir', home_index_path ,class:"btn btn-default btn-lg" %>
           <% end %>
         </div> 
       </div>
     </div>
   </div>
-
-  <!-- BOTON PARA ORGANIZAR-->
 	
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Inicio</a></li>

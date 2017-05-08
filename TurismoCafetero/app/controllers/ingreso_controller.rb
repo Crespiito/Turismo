@@ -27,11 +27,9 @@ class IngresoController < ApplicationController
 		end
 
 		if session[:sus] or session[:admin] or session[:root]
-			puts "aqui" , @email
 			session[:email] = @email 
 			redirect_to elegir_rol_elegir_path
 		else
-			puts "aqui"
 			session[:email] = nil
 			redirect_to ingreso_session_path
 		end
