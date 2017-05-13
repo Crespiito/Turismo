@@ -14,7 +14,7 @@
       <br>
         <div id="titulo">
           <% if session[:sus] or session[:admin] or session[:root] %>
-				    <%= button_to 'Salir', home_index_path ,class:"btn btn-default btn-lg" %>
+				    <%= button_to 'Volver', home_index_path ,class:"btn btn-default btn-lg" %>
           <% end %>
         </div> 
       </div>
@@ -22,31 +22,99 @@
 	</div>
 
 <div class="container-fluid">
- <div class="row">
-  	<div class="col-md-6 form-group">
-    	<label for="exampleSelect2" id="titulo"><h1>Lista de Administradores</h1></label>
-    	<select multiple class="form-control" id="exampleSelect2">
-      <% %>
-      	<option> </option>
-      	<option> </option>
-      	<option> </option>
-      	<option> </option>
-      	<option> </option>
-    	</select>
-  	</div>
-  	<div class="col-md-2 col-md-offset-2">
-  		<div class="row container-fluid banner-btn">
-    	<button class="btn btn-default btn-lg" id="titulo">agregar  </button>
-    	</div>
-    	<div class="row container-fluid banner-btn">
-    	<button class="btn btn-default btn-lg" id="titulo">modificar</button>
-    	</div>
-    	<div class="row container-fluid banner-btn">
-    	<button class="btn btn-default btn-lg" id="titulo">eliminar </button>
-    	</div>
-  	</div>
+<div class="row">
+  <div class="col-xs-6 col-md-6 col-lg-6">
+    <label for="ListaAdministradores" id="titulo"><h1>Lista de Administradores</h1></label>
+        <table class="table table-hover" id="ListaAdministradores">
+          <thead>
+            <tr>
+              <th>IdAdmin</th>
+              <th>Correo</th>
+              <th>Estado</th>
+              <th>Cuenta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% iterador = 0 %> 
+            <% while iterador < @datos.length do  %>
+              <tr id="<% @datos[iterador].IdAdmin %>">  
+                  <td> <%= @datos[iterador].IdAdmin %> </td>
+                  <td> <%= @datos[iterador].Correo %> </td>
+                  <% if @datos[iterador].Aprobado == 0%>
+                    <td>No aprobado</td>
+                  <% else %>
+                    <td>Aprobado</td>
+                  <% end %>
+                  <% if @datos[iterador].Activo == 0%>
+                    <td>Inhabilitada</td>
+                  <% else %>
+                    <td>Habilitado</td>
+                  <% end %>
+                  <td><%= form_for(:usuario, url: {:action => :mostrar}) do |f| %>
+                        <%= f.hidden_field :correo, :value => @datos[iterador].Correo %>          
+                        <%= f.submit "Ver" ,class:"btn btn-default btn-lg"%>  </td>
+                  <% end %>
+              </tr>
+              <% iterador = iterador +1 %>
+            <% end %>
+          </tbody>
+        </table>
+  </div>
+  <div class="col-xs-6 col-md-6 col-lg-6">
+    <label for="InformacionAdministrador" id="titulo"><h1>Informacion Del Administrador</h1></label>
+    <table class="table table-hover" id="InformacionAdministradores">
+      <thead>
+        <tr>
+          <th>DNI</th>
+          <th>Nombre</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
+          <th>Ciudad</th>
+          <th>Correo</th>
+          <th>Genero</th>
+          <th>Pais</th>
+          <th>Edad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @Usuario %>
+          <td><%= @Usuario.DNI %></td>
+          <td><%= @Usuario.Nombre %></td>
+          <td><%= @Usuario.Direccion %></td>
+          <td><%= @Usuario.Telefono %></td>
+          <td><%= @Usuario.Ciudad %></td>
+          <td><%= @Usuario.Correo %></td>
+          <td><%= @Usuario.Genero %></td>
+          <td><%= @Usuario.Pais %></td>
+          <td><%= @Usuario.Edad %></td>
+        <% end %>
+      </tbody>
+    </table>
+    <%if @Usuario%>
+    <!--Boton Aprobar-->
+      <%= form_for(:usuario, url: {:action => :aprobar}) do |a| %>
+        <%= a.hidden_field :correo, :value => @Usuario.Correo %>
+        <% if @Estado == 0 %>          
+          <%= a.submit "Aprobar",class:"btn btn-default btn-lg"%>
+        <% else %>
+          <%= a.submit "Anular",class:"btn btn-default btn-lg"%>
+        <% end %>
+      <% end %> 
 
- </div>
+    <!--Boton Eliminar-->
+      <%= form_for(:usuario, url: {:action => :eliminar}) do |a| %>
+        <%= a.hidden_field :correo, :value => @Usuario.Correo %>
+        <% if @Eliminado == 0 %>          
+          <%= a.submit "Habilitar",class:"btn btn-default btn-lg"%>
+        <% else %>
+          <%= a.submit "Inhabilitar",class:"btn btn-default btn-lg"%>
+        <% end %>
+      <% end %> 
+
+      <%= button_to 'Modificar', home_index_path ,class:"btn btn-default btn-lg" %>
+    <%end%>
+  </div>
+  </div>
 </div> 
 </body>
 </html>

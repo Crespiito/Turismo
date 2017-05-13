@@ -4,17 +4,55 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
+@-webkit-keyframes movimiento-diagonal {
+   from {
+      top: 0px;
+   }
+   
+   to {
+      top: 40px;
+   }
+}
+
+
+body.bodyS{
+  background-color: #f7f7f7;
+}
+
+h1.Cabecera{
+    -webkit-animation-name: movimiento-diagonal;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
+    position: relative;
+    color: #333333;
+    text-align: center;
+}
+
+#Cabecera{
+
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+    font-size: 65px;
+
+}
+
 #titulo {
     font-style: normal;
     font-family: 'Lobster', cursive;
 }
 
-body.bodyS{
-	background-color: #F3FDB0;
+.Cabecera{
+    background-color: #f7f7f7;  
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom:30px;
+
 }
 
 h1.titulo{
-	color: #484835;
+	color: #333333;
+;
 }
 
 .principal {
@@ -40,9 +78,8 @@ h1.titulo{
 }
 
 .baner{
-	background-color: #6AC58E;	
+	background-color: #474747;	
 	box-sizing: border-box;
-	margin-bottom: 40px;
 	}
 
 div.Bloque{
@@ -55,11 +92,15 @@ div.Bloque{
     margin-bottom: 40px;
     font-style: normal;
     font-family: 'Lobster', cursive;
-    color: #000000;
+    color: #f7f7f7;
 }
 
 
 .banner-btn{
+    padding-top: 10px;
+    margin-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }

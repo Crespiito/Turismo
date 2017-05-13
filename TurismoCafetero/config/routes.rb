@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
 
   get 'vista_admin/admin'
 
@@ -29,6 +29,20 @@ Rails.application.routes.draw do
   post "ingreso" => "ingreso#create"
 
   post "registro_usuarios" => "registro_usuarios#create"
+
+  post "vista_root" => "vista_root#mostrar"
+
+  get "vista_root" => "vista_root#volver"
+
+  post "vista_root_aceptar" => "vista_root#aprobar"
+
+  get "vista_root_aceptar" => "vista_root#volver"
+
+  post "vista_root_eliminar" => "vista_root#eliminar"
+
+  get "vista_root_eliminar" => "vista_root#volver"
+
+  post "home" => "home#salir"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

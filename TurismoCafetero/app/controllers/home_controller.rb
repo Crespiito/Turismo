@@ -1,13 +1,9 @@
 class HomeController < ApplicationController
-
-  def index
-  end
-
-  def destroy
-  	session.delete(:email)
-  	session.delete(:admin)
-  	session.delete(:sus)
-  	session.delete(:root)
-  end
-
+	def salir
+    	session.delete(:email)
+        session.delete(:admin)
+        session.delete(:sus)
+        session.delete(:root)
+        render home_index_path
+	end
 end

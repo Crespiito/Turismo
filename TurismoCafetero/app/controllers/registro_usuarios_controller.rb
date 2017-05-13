@@ -21,7 +21,6 @@ class RegistroUsuariosController < ApplicationController
 		@Edad = params[:registro][:edad]
 		@Rol = params[:rol] 
 
-		
 		@UsuarioGeneral = UsuarioGeneral.new({
 			:DNI => @DNI,
 			:Nombre => @nombre,
@@ -34,8 +33,8 @@ class RegistroUsuariosController < ApplicationController
 			:Edad => @Edad
 			})
 		
-		if UsuarioGeneral.exists?(DNI:@DNI)
-			render registro_usuarios_registro_path
+		if UsuarioGeneral.exists?(DNI:@DNI) or UsuarioGeneral.exists?(Correo: @Correo)
+			render registro_usuarios_registro 
 		else 
 			@UsuarioGeneral.save
 			if @Rol == "Administrador"
@@ -45,19 +44,19 @@ class RegistroUsuariosController < ApplicationController
 					:Correo => @Correo,
 					:Password => generarpass(),
 					:Aprobado => 0,
-					:Activo => 0
+					:Activo => 1
 					})
 				@UsuarioAdmin.save
 			end
 
 			if @Rol == "Suscrito"
 				@UsuarioSuscrito = UsuarioSuscrito.new({
-					:IdAdmin => UsuarioSuscrito.all.length,
+					:IdSuscrito => UsuarioSuscrito.all.length,
 					:DNI => @DNI,
 					:Correo => @Correo,
 					:Password => generarpass(),
 					:Aprobado => 0,
-					:Activo => 0
+					:Activo => 1
 					})
 				@UsuarioSuscrito.save
 			end
@@ -68,8 +67,7 @@ class RegistroUsuariosController < ApplicationController
 
 	   		if @UsuarioGeneral.save and @UsuarioSuscrito != nil
 	      		redirect_to home_index_path, :notice => "El registro ha sido eviado";
-	   		end			
-			puts "Usuario Creado"
+	   		end
 		end 
 	end
 end

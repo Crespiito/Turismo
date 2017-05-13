@@ -3,34 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Ek+Mukta|Kanit');
+
+
+
 
 #titulo {
     font-style: normal;
-    font-family: 'Lobster', cursive;
+    font-family: 'Kanit', bold;
 }
 
 #Llogin-lg {
     font-style: normal;
-    font-family: 'Lobster', cursive;
+    font-family: 'Kanit', bold;
     font-size: 50px;
 }
 
 #Llogin-md {
     font-style: normal;
-    font-family: 'Lobster', cur3ive;
+    font-family: 'Kanit', bold;
     font-size: 30px;
 }
 
 
 #Llogin-sm {
     font-style: normal;
-    font-family: 'Lobster', cursive;
+    font-family: 'Kanit', bold;
     font-size: 20px;
 }
 
 #Llogin-xs {
     font-style: normal;
-    font-family: 'Lobster', cursive;
+    font-family: 'Kanit', bold;
     font-size: 20px;
 }
 
@@ -38,8 +42,19 @@ body.body1{
 	background-color: #F3FDB0;
 }
 
+h1.Cabecera-session{
+    color: #A9A9A9;
+    text-align: center;
+}
+
+#Cabecera-session{
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+
+}
+
 h1.titulo{
-	color: #484835;
+	color: #f7f7f7;
 }
 
 .principal {
@@ -65,6 +80,26 @@ h1.titulo{
 }
 
 
+.btn-color{
+   background-color: #37c0fb;
+   color: #f7f7f7;
+}
+
 div.Bloque{
 	    margin-bottom: 40px;
+}
+
+.baner-log{
+    
+}
+
+.body-session {
+    background-image: url("imagenes/fondo-session.jpg");
+
+}
+
+.baner-session{
+    border-radius: 10px;
+    color: #333333;
+    text-align: center;
 }
