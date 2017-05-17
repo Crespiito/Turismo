@@ -1,2 +1,122 @@
-<h1>VistaAdmin#admin</h1>
-<p>Find me in app/views/vista_admin/admin.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 550px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+
+  	<div class= "container-fluid baner">
+		<div class="row">	
+			<div class="col-xs-6 col-md-7 col-lg-7">
+				<h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
+			</div>
+      <div class="col-xs-1 col-md-1 col-lg-1 banner-btn">
+      <br>
+        <div id="titulo">
+          <% if session[:sus] or session[:admin] or session[:root] %>
+				    <%= button_to 'Volver', home_index_path ,class:"btn btn-default btn-lg" %>
+          <% end %>
+        </div> 
+      </div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+	<div class="row">
+	  <div class="col-xs-6 col-md-6 col-lg-6">
+	    <label for="ListaSuscrito" id="titulo"><h1>Usuarios Suscritos</h1></label>
+	        <table class="table table-hover" id="ListaSuscrito">
+	          <thead>
+	            <tr>
+	              <th>Id Suscrito</th>
+	              <th>Correo</th>
+	              <th>Estado</th>
+	              <th>Cuenta</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	            <% iterador = 0 %> 
+	            <% while iterador < @datos.length do  %>
+	              <tr id="<% @datos[iterador].IdSuscrito %>">  
+	                  <td> <%= @datos[iterador].IdSuscrito %> </td>
+	                  <td> <%= @datos[iterador].Correo %> </td>
+	                  <% if @datos[iterador].Aprobado == 0%>
+	                    <td>No aprobado</td>
+	                  <% else %>
+	                    <td>Aprobado</td>
+	                  <% end %>
+	                  <% if @datos[iterador].Activo == 0%>
+	                    <td>Inhabilitada</td>
+	                  <% else %>
+	                    <td>Habilitada</td>
+	                  <% end %>
+	                  <td><%= form_for(:usuario, url: {:action => :aprobar}) do |f| %>
+	                        	<%= f.hidden_field :correo, :value => @datos[iterador].Correo %>
+	                        	<% if @datos[iterador].Aprobado == 0%>
+	                        		<%= f.submit "Aprobar" ,class:"btn btn-default btn-lg"%>
+	                        	<% end %>  
+	                  		<% end %>
+	                  </td>
+	                  <td><%= form_for(:usuario, url: {:action => :eliminar}) do |a| %>
+	                        	<%= a.hidden_field :correo, :value => @datos[iterador].Correo %>
+	                        	<% if @datos[iterador].Activo == 0 %>          
+						          <%= a.submit "Habilitar",class:"btn btn-default btn-lg"%>
+						        <% else %>
+						          <%= a.submit "Inhabilitar",class:"btn btn-default btn-lg"%>
+						        <% end %>  
+	                  		<% end %>
+	                  </td>
+	              </tr>
+	              <% iterador = iterador +1 %>
+	            <% end %>
+	          </tbody>
+	        </table>
+	  	</div>
+
+	  	<div class="col-xs-6 col-md-6 col-lg-6">
+			<h3>A Donde Ir</h3>
+			<div id="map"></div>
+			<script>
+				  function initMap() {
+				  var uluru = {lat: 4.784079, lng: -75.689205};
+				  var map = new google.maps.Map(document.getElementById('map'), {
+				    zoom: 10,
+				    center: uluru
+				  });
+
+				  var contentString = '<div id="content">'+
+				      '<div id="siteNotice">'+
+				      '</div>'+
+				      '<h1 id="firstHeading" class="firstHeading">Puto el que lo lea</h1>'+
+				      '<div id="bodyContent">'+
+				      '<p>esta es una prueba del contenido de los marcadores</p>'+
+				      '<img src = "http://icelandmag.visir.is/sites/default/files/styles/article_body_image/public/thumbnails/image/24myn08mynf46041113_naa_06.jpg?itok=jpyWY5O8">'+
+				      '</div>'+
+				      '</div>';
+
+				  var infowindow = new google.maps.InfoWindow({
+				    content: contentString
+				  });
+
+				  var marker = new google.maps.Marker({
+				    position: uluru,
+				    map: map,
+				    title: 'Uluru (Ayers Rock)'
+				  });
+				  marker.addListener('click', function() {
+				    infowindow.open(map, marker);
+				  });
+				}
+			</script>
+			<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBWHqhQhcKgZQnTT4Zqa3wkO4DYu-xdiw&callback=initMap">
+			</script>
+		</div>
+	</div>
+  </body>
+</html>

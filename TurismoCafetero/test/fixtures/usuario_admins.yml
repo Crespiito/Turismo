@@ -7,6 +7,8 @@ one:
   Password: MyString
   Aprobado: 1
   Activo: 1
+  Zona: MyString
+  Interes: MyString
 
 two:
   IdAdmin: MyString
@@ -15,3 +17,5 @@ two:
   Password: MyString
   Aprobado: 1
   Activo: 1
+  Zona: MyString
+  Interes: MyString

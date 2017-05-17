@@ -34,13 +34,13 @@
 						</div>
               			<div class="row baner">
 							<% if session[:admin] %>
-								<center><%= button_to 'Administrador', nil ,class:"btn btn-default btn-lg" %>
+								<center><%= button_to 'Administrador', vista_admin_admin_path ,class:"btn btn-default btn-lg" %>
 							<% end %>
 						</div>
 						
 						<div class="row baner">
 							<% if session[:sus] %>
-							<center><%= button_to 'Suscrito', nil ,class:"btn btn-default btn-lg" %>
+							<center><%= button_to 'Suscrito', vista_suscrito_suscrito_path ,class:"btn btn-default btn-lg" %>
 							<% end %>
 						</div>
 					</div>

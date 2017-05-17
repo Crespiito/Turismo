@@ -44,7 +44,11 @@
       
             <div class="pull-right banner-btn">
               <div id="titulo">
+              <% unless session[:sus] or session[:admin] or session[:root] %>
                 <%= button_to 'Suscribirse', registro_usuarios_registro_path ,class:"btn btn-color btn-lg" %>
+              <% else %>
+                <%= button_to 'Solicitar Rol', registro_usuarios_registro_path ,class:"btn btn-color btn-lg" %>
+              <% end %>
               </div> 
             </div>
       

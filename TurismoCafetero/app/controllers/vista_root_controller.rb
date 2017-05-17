@@ -48,4 +48,8 @@ class VistaRootController < ApplicationController
 		redirect_to vista_root_root_path
 	end
 
+	def modificar
+		redirect_to vista_root_root_path
+	end
+
 end

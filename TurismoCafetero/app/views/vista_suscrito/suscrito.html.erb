@@ -1,2 +1,49 @@
-<h1>VistaSuscrito#suscrito</h1>
-<p>Find me in app/views/vista_suscrito/suscrito.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 550px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+
+  <div class= "container-fluid baner">
+    <div class="row"> 
+      <div class="col-xs-6 col-md-7 col-lg-7">
+        <h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
+      </div>
+      <div class="col-xs-1 col-md-1 col-lg-1 banner-btn">
+      <br>
+        <div id="titulo">
+          <% if session[:sus] or session[:admin] or session[:root] %>
+            <%= button_to 'Volver', home_index_path ,class:"btn btn-default btn-lg" %>
+          <% end %>
+        </div> 
+      </div>
+    </div>
+  </div>
+  
+    <h3>A Donde Ir</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 4.784079, lng: -75.689205};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: uluru
+        });
+        /**
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        }); */
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBWHqhQhcKgZQnTT4Zqa3wkO4DYu-xdiw&callback=initMap">
+    </script>
+  </body>
+</html>

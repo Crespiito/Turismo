@@ -1,0 +1,2 @@
+class InteresesCatalogo < ApplicationRecord
+end

@@ -1,3 +1,30 @@
 // Place all the styles related to the Ingreso controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1.Cabecera-session{
+    -webkit-animation-name: movimiento-diagonal;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
+    position: relative;
+    color: #333333;
+    text-align: center;
+}
+
+#Cabecera-session{
+
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+    font-size: 65px;
+
+}
+
+.Cabecera-session{ 
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom:30px;
+
+}
+

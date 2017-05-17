@@ -48,7 +48,7 @@
                   <% if @datos[iterador].Activo == 0%>
                     <td>Inhabilitada</td>
                   <% else %>
-                    <td>Habilitado</td>
+                    <td>Habilitada</td>
                   <% end %>
                   <td><%= form_for(:usuario, url: {:action => :mostrar}) do |f| %>
                         <%= f.hidden_field :correo, :value => @datos[iterador].Correo %>          
@@ -90,14 +90,24 @@
         <% end %>
       </tbody>
     </table>
+
+    <% if @Usuario %>
+       <label for="Intereses" id="titulo"><h1>Intereses</h1></label><br>
+      <%@intereses = misintereses(@Usuario.DNI)%>
+      <% if @intereses != nil %>
+        <%@intereses.each do |i|%>
+          <%= check_box_tag :interes %>
+          <%= i %>,
+        <% end %>
+      <% end %>
+    <% end %>
+
     <%if @Usuario%>
     <!--Boton Aprobar-->
       <%= form_for(:usuario, url: {:action => :aprobar}) do |a| %>
         <%= a.hidden_field :correo, :value => @Usuario.Correo %>
         <% if @Estado == 0 %>          
           <%= a.submit "Aprobar",class:"btn btn-default btn-lg"%>
-        <% else %>
-          <%= a.submit "Anular",class:"btn btn-default btn-lg"%>
         <% end %>
       <% end %> 
 
@@ -111,7 +121,12 @@
         <% end %>
       <% end %> 
 
-      <%= button_to 'Modificar', home_index_path ,class:"btn btn-default btn-lg" %>
+    <!--Boton Modificar-->
+      <%= form_for(:usuario, url: {:action => :modificar}) do |a| %>
+        <%= a.hidden_field :correo, :value => @Usuario.Correo %>         
+        <%= a.submit "Modificar",class:"btn btn-default btn-lg"%>
+      <% end %> 
+
     <%end%>
   </div>
   </div>

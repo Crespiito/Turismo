@@ -10,17 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507211628) do
+ActiveRecord::Schema.define(version: 20170517152248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "usuario_admins", primary_key: "IdAdmin", id: :string, force: :cascade do |t|
+  create_table "interes_usuarios", force: :cascade do |t|
+    t.string   "DNI"
+    t.string   "Intereses"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "intereses_catalogos", force: :cascade do |t|
+    t.string   "Nombre"
+    t.text     "Descripcion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "usuario_admins", force: :cascade do |t|
+    t.string   "IdAdmin"
     t.string   "DNI"
     t.string   "Correo"
     t.string   "Password"
     t.integer  "Aprobado"
     t.integer  "Activo"
+    t.string   "Zona"
+    t.string   "Interes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,7 +73,15 @@ ActiveRecord::Schema.define(version: 20170507211628) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "usuario_admins", "usuario_generals", column: "DNI", primary_key: "DNI"
+  create_table "zonas", force: :cascade do |t|
+    t.string   "Descripcion"
+    t.float    "Longitud"
+    t.float    "Latitud"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_foreign_key "interes_usuarios", "usuario_generals", column: "DNI", primary_key: "DNI"
   add_foreign_key "usuario_roots", "usuario_generals", column: "DNI", primary_key: "DNI"
   add_foreign_key "usuario_suscritos", "usuario_generals", column: "DNI", primary_key: "DNI"
 end

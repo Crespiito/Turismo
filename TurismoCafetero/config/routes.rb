@@ -26,6 +26,8 @@
 
   get 'home/index'
 
+  post "home" => "home#salir"
+
   post "ingreso" => "ingreso#create"
 
   post "registro_usuarios" => "registro_usuarios#create"
@@ -42,7 +44,21 @@
 
   get "vista_root_eliminar" => "vista_root#volver"
 
-  post "home" => "home#salir"
+  post "vista_root_modificar" => "vista_root#modificar"
+
+  get "vista_root_modificar" => "vista_root#volver"
+
+  post "vista_admin" => "vista_admin#mostrar"
+
+  get "vista_admin" => "vista_admin#volver"
+
+  post "vista_admin_aceptar" => "vista_admin#aprobar"
+
+  get "vista_admin_aceptar" => "vista_admin#volver"
+
+  post "vista_admin_eliminar" => "vista_admin#eliminar"
+
+  get "vista_admin_eliminar" => "vista_admin#volver"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

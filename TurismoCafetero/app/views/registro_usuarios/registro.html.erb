@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title></title>  
+  <script>
+    function nombre_funcion() {
+      var rol= $("[name=rol]").val();
+      if (rol == "Suscrito"){
+        $("#Suscrito").show();
+        $("#Administrador").hide();}
+      if (rol == "Administrador"){
+        $("#Administrador").show();
+        $("#Suscrito").hide();}
+    } 
+  </script>
   </head>
 
   <body class = "bodyS">
@@ -19,21 +30,15 @@
     </div>
 
     <div class="row"> 
-
       <div class="container-fluid">
-
         <div class ="form-grup"> 
             <%= form_for(:registro, url: {:action => :create}) do |f| %>
-
               <div class="row">
-
                 <div class="container-fluid">
-
                   <div class="col-xs-12 col-md-6 col-lg-6">
-
                       <div class="field " id= "Llogin-sm">
                         <%= f.label :DNI %><br />
-                        <%= f.text_field :DNI, autofocus: true ,class:"form-control" %>
+                        <%= f.text_field :DNI, autofocus: true,:required =>"required" ,class:"form-control" %>
                       </div>
                       
                       <div class="field " id= "Llogin-sm">
@@ -61,7 +66,10 @@
                         <%= f.email_field :email, autofocus: true ,class:"form-control" %>
                       </div>  
                   </div>
-
+                </div>
+              </div>
+              <div class="row"> 
+                <div class="container-fluid">
                   <div class="col-xs-12 col-md-6 col-lg-6">
                       <div class="field " id= "Llogin-sm">
                         <%= f.label :ciudad %><br />
@@ -80,13 +88,30 @@
 
                       <div class="field " id= "Llogin-sm">
                         <%= f.label :genero %><br />
-                        <%= select_tag :genero, options_for_select([ "Masculino", "Femenino" ]) %>
+                        <%= select_tag :genero, options_for_select([ "Masculino", "Femenino" ]), include_blank: true %>
                       </div>
 
-                       <div class="field " id= "Llogin-sm">
+                      <div class="field " id= "Llogin-sm">
                         <%= f.label :rol %><br />
-                        <%= select_tag :rol, options_for_select([ "Suscrito", "Administrador" ]) %>
+                        <%= select_tag :rol, options_for_select([ "Suscrito", "Administrador" ]), :onclick =>"nombre_funcion()" %>
                       </div>
+                      <br>
+
+                      <div class="field " id= "Suscrito" >
+                        Seleccione sus intereses: <br>
+                        <% @InteresesBase.each do |i|%>
+                          <%= f.check_box :interessus, {multiple: true}%>
+                          <%= i.Nombre %>
+                        <% end %>
+                      </div>
+
+                      <div class="field " id= "Administrador" hidden="">
+                        Seleccione el interes a administrar: <br>
+                        <%= select_tag :interesadmin, options_for_select(catalogointereses) %>
+                        Seleccione su zona a administrar <br>
+                        <%= select_tag :zonaadmin, options_for_select(catalogointereses) %>
+                      </div>
+                      <br>                     
                   </div>
                 </div>
               </div>
