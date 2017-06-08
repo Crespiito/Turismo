@@ -2,10 +2,12 @@
 
 one:
   Descripcion: MyString
-  Longitud: 1.5
-  Latitud: 1.5
+  Longitud: MyString
+  Latitud: MyString
+  Superficie: MyString
 
 two:
   Descripcion: MyString
-  Longitud: 1.5
-  Latitud: 1.5
+  Longitud: MyString
+  Latitud: MyString
+  Superficie: MyString

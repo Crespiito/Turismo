@@ -14,21 +14,16 @@ class RegistroUsuariosController < ApplicationController
     	return pass
   	end
 
-  	def traducirintereses(interesescheck, rol)
-  		puts interesescheck, "Esta es la lista de intereses"
-  		if rol == "Suscrito"
-	  		@lista_interes = interesescheck
-	  		i = 0
-	  		@interes_usuario= ""
-	  		while i < @InteresesBase.length
-	  			if @lista_interes[2*i+1]== '1'
-	  				@interes_usuario = @InteresesBase[i].Nombre+"$"+@interes_usuario
-	  			end
-	  			i = i + 1
-	  		end
-	  	else
-	  		@interes_usuario = interesescheck
-	  	end
+  	def traducirintereses(interesescheck)
+  		@lista_interes = interesescheck
+  		i = 0
+  		@interes_usuario= ""
+  		while i < @InteresesBase.length
+  			if @lista_interes[2*i+1]== '1'
+  				@interes_usuario = @InteresesBase[i].Nombre+"$"+@interes_usuario
+  			end
+  			i = i + 1
+  		end
   		return @interes_usuario
   	end
 
@@ -91,7 +86,12 @@ class RegistroUsuariosController < ApplicationController
 					:Activo => 1
 					})
 				@UsuarioSuscrito.save
-				@Intereses = @Interesessus
+
+				@Tabla_Intereses = InteresUsuario.new({
+					:DNI => @DNI,
+					:Intereses => traducirintereses(@Interesessus)
+				})
+				@Tabla_Intereses.save
 			end
 
 			if @UsuarioGeneral.save and @UsuarioAdmin != nil
@@ -100,14 +100,6 @@ class RegistroUsuariosController < ApplicationController
 	   		if @UsuarioGeneral.save and @UsuarioSuscrito != nil
 	      		redirect_to home_index_path, :notice => "El registro ha sido eviado";
 	   		end
-
-			@Tabla_Intereses = InteresUsuario.new({
-				:DNI => @DNI,
-				:Intereses => traducirintereses(@Intereses, @Rol)
-				})
-			@Tabla_Intereses.save
 		end 
 	end
 end
-
-

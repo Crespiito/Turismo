@@ -37,22 +37,35 @@ h1.Cabecera{
 
 }
 
+#Titulitos{
+
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+
+}
+
 #titulo {
     font-style: normal;
     font-family: 'Lobster', cursive;
 }
 
+#Descripcion{
+    font-style: normal;
+    font-family: 'Kanit', bold;
+    font-size: 17px;
+    text-align: center;
+}
+
 .Cabecera{
-    background-color: #f7f7f7;  
+    background-color: #ffffff;  
     box-sizing: border-box;
-    margin-top: 30px;
     margin-bottom:30px;
 
 }
 
 h1.titulo{
 	color: #333333;
-;
 }
 
 .principal {
@@ -103,4 +116,13 @@ div.Bloque{
     margin-bottom: 10px;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+body.body-index{
+  background-image: url(imagenes/fondo-index.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
 }

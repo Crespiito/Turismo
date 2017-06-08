@@ -9,7 +9,7 @@ h1.Cabecera-session{
     -webkit-animation-iteration-count: 2;
     -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
     position: relative;
-    color: #333333;
+    color: #d4d3d3;
     text-align: center;
 }
 
@@ -18,6 +18,31 @@ h1.Cabecera-session{
     font-style: normal;
     font-family: 'Lobster', cursive;
     font-size: 65px;
+}
+
+label.texto {
+    color: #f7f7f7;
+}
+
+div.transbox-session {
+    background-color: #3d424e;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.6;
+    border-radius: 10px;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+body.body-session{
+  background-image: url(imagenes/fondo-session.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 
 }
 

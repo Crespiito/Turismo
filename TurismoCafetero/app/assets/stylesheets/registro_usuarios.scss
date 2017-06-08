@@ -1,3 +1,81 @@
 // Place all the styles related to the registro_usuarios controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@-webkit-keyframes movimiento-lateral {
+   from {
+      right: 200px;
+   }
+   
+   to {
+      right: 240px;
+   }
+}
+
+@-webkit-keyframes movimiento-Vertical {
+   from {
+      top: 0px;
+   }
+   
+   to {
+      top: 40px;
+   }
+}
+
+
+
+img.Logo-registro{
+	-webkit-animation-name: movimiento-lateral;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
+	position: fixed;
+	top: 250px;
+	right: 200px;
+
+}
+
+body.body-registro{
+  background-image: url(imagenes/background-photo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 3px solid white;
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+
+
+h1.Cabecera-registro{
+    -webkit-animation-name: movimiento-Vertical;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
+    position: relative;
+    color: #333333;
+    text-align: center;
+
+}
+
+#Cabecera-registro{
+
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+    font-size: 65px;
+
+}
+
+.Cabecera-registro{ 
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom:30px;
+
+}

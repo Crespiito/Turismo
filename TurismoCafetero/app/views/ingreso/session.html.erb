@@ -7,53 +7,57 @@
 <body class = "body-session">
   
   <div class = "Cabecera-session">
-  <div class = "container-fluid">
-    <div class="row">
-          <div class="col-xs-12 col-md-12 col-lg-12">
-            <h1 class="Cabecera-session center" id="Cabecera-session">
-                De Turismo por el Eje
-            </h1>
-          </div>
+    <div class = "container-fluid">
+      <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <h1 class="Cabecera-session center" id="Cabecera-session">
+                  De Turismo por el Eje
+              </h1>
+            </div>
+      </div>
     </div>
   </div>
-</div>
 
   <div class="container-fluid ">
       <div class="container-fluid "> 
-          <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4">
-              <div class ="row justify-content-center">
-              <div class ="col-xs-12 col-md-12 col-lg-12 baner-session">
+          <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4 ">
+            <div class="transbox-session">
+              <div class ="row justify-content-center ">
+                <div class ="col-xs-12 col-md-12 col-lg-12 baner-session">
                   <h1 class="center" id= "Llogin-lg">Iniciar Sesion</h1>
-              </div>
+                </div>
 
               </div>    
               <div class ="row justify-content-center">
                   <div class ="col-xs-12 col-md-12 col-lg-12">
                       <div class ="form-grup"> 
                           <%= form_for(:session, url: {:action => :create}) do |f| %>
-                              <div class="field " id= "Llogin-sm">
-                                <%= f.label :correo %><br />
+                              <div class="field Texto" id= "Llogin-sm">
+                                <%= f.label :correo , class:"texto" %><br />
                                 <%= f.email_field :email, autofocus: true ,class:"form-control" %>
                               </div>  
 
-                              <div class="field" id= "Llogin-sm">
-                                <%= f.label :contraseña %><br />
+                              <div class="field Texto" id= "Llogin-sm">
+                                <%= f.label :contraseña , class:"texto" %><br />
                                 <%= f.password_field :password, autocomplete: "off" ,class:"form-control" %>
                               </div>
-
                               <br>
+                              <br>
+                              <center>
+                                
                               <div class="actions" id= "Llogin-md">
                                 <%= f.submit "Ingresar" ,class:"btn btn-default btn-lg"%>
                                 <a type="button" class="btn btn-default btn-lg" href="http://localhost:3000/">
                                     Regresar
                                 </a>
                               </div>
+                              </center>
                           <% end %>
                       </div>
                       <br>
-                      <br>
                   </div>
               </div>
+            </div>
           </div> 
       </div>
   </div>

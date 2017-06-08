@@ -1,3 +1,109 @@
 // Place all the styles related to the elegir_rol controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@-webkit-keyframes movimiento-Vertical {
+   from {
+      top: 0px;
+   }
+   
+   to {
+      top: 40px;
+   }
+}
+
+
+h1.Cabecera-eleccion{
+    -webkit-animation-name: movimiento-Vertical;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
+    position: relative;
+    color: #333333;
+    text-align: center;
+    color:white;
+}
+
+h1.titulo-eleccion{
+	color: #333;
+	text-align: center;
+}
+
+#Cabecera-eleccion{
+
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+    font-size: 65px;
+
+}
+
+.Cabecera-eleccion{ 
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom:30px;
+
+}
+
+
+.baner-eleccion{
+	background-color: #f2f2f2;	
+	box-sizing: border-box;
+	border-radius: 13px;
+	}
+
+.baner-sus{
+	background-color: #b3b3b3;	
+	box-sizing: border-box;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	}
+
+.baner-admin{
+	background-color: #ccc;	
+	box-sizing: border-box;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	}
+
+.baner-root{
+	background-color: #e6e6e6;	
+	box-sizing: border-box;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	}
+
+.body-elegir {
+    background-image: url("imagenes/fondo-session.jpg");
+    background-position: center center;
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover;
+}
+
+.body-elegir1 {
+    background-image: url("imagenes/fondo1.jpg");
+    background-position: center center;
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+  	background-size: cover;
+
+}
+
+.body-elegir2 {
+    background-image: url("imagenes/fondo2.jpg");
+    background-position: center center;
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+  	background-size: cover;
+
+}
+
+.body-elegir3 {
+    background-image: url("imagenes/fondo3.jpg");
+    background-position: center center;
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+  	background-size: cover;
+
+}

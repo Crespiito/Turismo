@@ -1,55 +1,108 @@
 
 <!DOCTYPE html>
 <html>
-<body class="bodyS">
+<body id="body" class="body-elegir">
 <div calss ="row" >
-      <div class = "container-fluid" >
-        <div class= "container-fluid baner">
-          <div class="row"> 
-              <div class="col-xs-5 col-md-6 col-lg-6">
-                <h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
-              </div>
-          </div>
-        </div>
+  <div class = "Cabecera-eleccion">
+    <div class = "container-fluid">
+      <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <h1 class="Cabecera-eleccion center" id="Cabecera-eleccion">
+                  De Turismo por el Eje
+              </h1>
+            </div>
       </div>
+    </div>
   </div>
 
   <div class="container-fluid">
       <div class="container-fluid "> 
-          <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4 baner">
+          <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4 baner-eleccion">
               <div class ="row justify-content-center">
 
               	<div class ="col-xs-12 col-md-12 col-lg-12">
-                  	<h1 id= "Llogin-lg">Seleccione Rol</h1>
+                  	<h1 class ="titulo-eleccion" id= "Llogin-lg">Seleccione Rol</h1>
               	</div>
 
               </div>
               <br>
               <div class ="row justify-content-center">
               		<div class ="col-xs-12 col-md-12 col-lg-12">
-              			<div class="row baner">
 							<% if session[:root] %>
-								<center><%= button_to 'Root', vista_root_root_path ,class:"btn btn-default btn-lg" %>
+                    <div id ="root" class="row baner-root">
+								          <center><%= button_to 'Root', vista_root_root_path ,class:"btn btn-danger btn-lg" %>
+                    </div>
+
+                    <script type="text/javascript">
+                          var x = document.getElementById("root");
+                              y = x.getElementsByTagName("form");
+                              z = y[0];
+                              c = z.getElementsByClassName("btn");
+                            c[0].addEventListener("mouseover", myFunction);
+                            c[0].addEventListener("mouseout", myThirdFunction);
+
+                            function myFunction() {
+                                document.getElementById("body").className =document.getElementById("body").className.replace( /(?:^|\s)body-elegir(?!\S)/g , 'body-elegir1' )
+                            }
+
+                            function myThirdFunction() {
+                                document.getElementById("body").className =document.getElementById("body").className.replace( /(?:^|\s)body-elegir1(?!\S)/g , 'body-elegir' )
+                            }
+                    </script>
+
 							<%end%>
-						</div>
-              			<div class="row baner">
 							<% if session[:admin] %>
-								<center><%= button_to 'Administrador', vista_admin_admin_path ,class:"btn btn-default btn-lg" %>
+                    <div id ="admin" class="row baner-admin">
+								        <center><%= button_to 'Administrador', vista_admin_admin_path ,class:"btn btn-info btn-lg" %>
+                    </div>
+
+                    <script type="text/javascript">
+                      var x1 = document.getElementById("admin");
+                          y1 = x1.getElementsByTagName("form");
+                          z1 = y1[0];
+                          c1 = z1.getElementsByClassName("btn");
+                          c1[0].addEventListener("mouseover", myFunction1);
+                          c1[0].addEventListener("mouseout", myThirdFunction1);
+
+                      function myFunction1() {
+                          document.getElementById("body").className =document.getElementById("body").className.replace( /(?:^|\s)body-elegir(?!\S)/g , 'body-elegir2' )
+                      }
+
+                      function myThirdFunction1() {
+                          document.getElementById("body").className =document.getElementById("body").className.replace( /(?:^|\s)body-elegir2(?!\S)/g , 'body-elegir' )
+                      }
+                    </script>
+
 							<% end %>
-						</div>
 						
-						<div class="row baner">
 							<% if session[:sus] %>
-							<center><%= button_to 'Suscrito', vista_suscrito_suscrito_path ,class:"btn btn-default btn-lg" %>
+                    <div id ="sus" class="row baner-sus">
+							           <center><%= button_to 'Suscrito', vista_suscrito_suscrito_path ,class:"btn btn-default btn-lg" %>
+                    </div>
+
+                    <script type="text/javascript">
+                        var x2 = document.getElementById("sus");
+                            y2 = x2.getElementsByTagName("form");
+                            z2 = y2[0];
+                            c2 = z2.getElementsByClassName("btn")
+                          c2[0].addEventListener("mouseover", myFunction2);
+                          c2[0].addEventListener("mouseout", myThirdFunction2);
+
+                        function myFunction2() {
+                              document.getElementById("body").className =document.getElementById("body").className.replace( /(?:^|\s)body-elegir(?!\S)/g , 'body-elegir3' )
+                          }
+
+                        function myThirdFunction2() {
+                              document.getElementById("body").className =document.getElementById("body").className.replace( /(?:^|\s)body-elegir3(?!\S)/g , 'body-elegir' )
+                          }
+                    </script>
+
 							<% end %>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
 </body>
 </html>

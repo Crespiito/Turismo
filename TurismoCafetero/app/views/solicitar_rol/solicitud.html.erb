@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+	    function Administrador() {
+	      $("#Administrador").show();
+	      $("#Suscrito").hide();
+	    }
+	    function Suscrito() {
+	      $("#Suscrito").show();
+	      $("#Administrador").hide();
+	    }  
+    </script>
+</head>
+<body class="bodyS">
+
+	<div class= "container-fluid baner">
+		<div class="row">	
+			<div class="col-xs-6 col-md-7 col-lg-7">
+				<h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
+			</div>
+      <div class="col-xs-1 col-md-1 col-lg-1 banner-btn">
+      <br>
+        <div id="titulo">
+          <% if session[:sus] or session[:admin] or session[:root] %>
+				    <%= button_to 'Volver', home_index_path ,class:"btn btn-default btn-lg" %>
+          <% end %>
+        </div> 
+      </div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<div class="container-fluid">
+	  <div class="container-fluid "> 
+	      <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4 baner-eleccion">
+	          <div class ="row justify-content-center">
+
+	          	<div class ="col-xs-12 col-md-12 col-lg-12">
+	              	<h1 class ="titulo-eleccion" id= "Llogin-lg">Seleccione Rol</h1>
+	          	</div>
+
+	          </div>
+	          <br>
+	          <div class ="row justify-content-center">
+	          		<div class ="col-xs-12 col-md-12 col-lg-12">
+							<% if session[:root] %>
+	                <div class="row baner-root">
+	        					<% unless admin? %>
+						          <center><button class="btn btn-info btn-lg" onclick ="Administrador()">Administrador</button><br>
+						        <% end %>
+						        <br>
+						        <% unless suscrito? %>
+						          <center><button class="btn btn-default btn-lg" onclick ="Suscrito()">Suscrito</button>
+						        <% end %>
+	                </div>
+							<%end%>
+							<% if session[:admin] and not session[:root]%>
+	                			<div class="row baner-admin">
+							        <% unless suscrito?%>
+							          <center><button class="btn btn-default btn-lg" onclick ="Suscrito()">Suscrito</button>
+							        <% end %>
+	                			</div>
+							<% end %>
+						
+							<% if session[:sus] and not session[:root] %>
+	                			<div class="row baner-sus">
+								    <% unless admin?%>
+							          <center><button class="btn btn-info btn-lg" onclick ="Administrador()">Administrador</button>
+							        <% end %>
+						        <br>
+	                			</div>
+							<% end %>
+					</div>
+
+                    	<center>
+							<div class="field " id= "Administrador" hidden="">
+							<br>
+                    		<%= form_for(:solicitud, url: {:action => :solicitar}) do |f| %>
+	                         	Seleccione el interes a administrar: <br>
+	                        	<%= select_tag :interesadmin, options_for_select(catalogointereses) %>
+	                        	<br>Seleccione su zona a administrar <br>
+	                        	<%= select_tag :zonaadmin, options_for_select(zona) %>
+	                        	<br><br>
+	                        	<%= f.hidden_field :tipo, :value => "Administrador" %>
+	                        	<%= f.submit "Aceptar" ,class:"btn btn-default btn-lg"%>
+	                        <% end %>
+	                        </div>
+	                        <div class="field " id= "Suscrito" hidden="">
+	                        <br>
+	                        <%= form_for(:solicitud, url: {:action => :solicitar}) do |g| %>
+	                        	Seleccione sus intereses: <br>
+	                        	<% @InteresesBase.each do |i|%>
+	                          	<%= g.check_box :interessus, {multiple: true}%>
+	                          	<%= i.Nombre %><br>
+	                        	<%end%>
+	                        	<br>
+	                        	<%= g.hidden_field :tipo, :value => "Suscrito" %>
+	                        	<%= g.submit "Aceptar" ,class:"btn btn-default btn-lg"%>
+	                        <% end %>
+	                        </div>
+                    	</center>                 
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

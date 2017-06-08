@@ -15,19 +15,27 @@
   </script>
   </head>
 
-  <body class = "bodyS">
+  <body class = "body-registro">
 
-    <div calss ="row" >
-      <div class = "container-fluid" >
-        <div class= "container-fluid baner">
-          <div class="row"> 
-              <div class="col-xs-5 col-md-6 col-lg-6">
-                <h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
-              </div>
-          </div>
-        </div>
+  <div class = "Cabecera-registro">
+    <div class = "container-fluid">
+      <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <h1 class="Cabecera-registro center" id="Cabecera-registro">
+                  De Turismo por el Eje
+              </h1>
+            </div>
       </div>
     </div>
+  </div>
+
+  <div>
+      <div>
+            <div>
+                  <%= image_tag "Logo-grande.png" , class:"Logo-registro" %>
+            </div>                     
+      </div>
+  </div>
 
     <div class="row"> 
       <div class="container-fluid">
@@ -35,60 +43,79 @@
             <%= form_for(:registro, url: {:action => :create}) do |f| %>
               <div class="row">
                 <div class="container-fluid">
-                  <div class="col-xs-12 col-md-6 col-lg-6">
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :DNI %><br />
-                        <%= f.text_field :DNI, autofocus: true,:required =>"required" ,class:"form-control" %>
-                      </div>
-                      
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :nombre %><br />
-                        <%= f.text_field :nombre, autofocus: true ,class:"form-control" %>
-                      </div> 
-
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :apellido %><br />
-                        <%= f.text_field :apellido, autofocus: true ,class:"form-control" %>
-                      </div>
-
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :direccion %><br />
-                        <%= f.text_field :direccion, autofocus: true ,class:"form-control" %>
+                  <div class="col-xs-12 col-md-6 col-lg-6 transbox">
+                    <br>
+                      <div class="row">
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                            <div class="field " id= "Llogin-sm">
+                              <%= f.label :nombre %><br />
+                              <%= f.text_field :nombre, autofocus: true ,class:"form-control" %>
+                            </div> 
+                          </div>
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                            <div class="field " id= "Llogin-sm">
+                              <%= f.label :apellido %><br />
+                              <%= f.text_field :apellido, autofocus: true ,class:"form-control" %>
+                            </div>
+                          </div> 
                       </div>
 
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :telefono %><br />
-                        <%= f.text_field :telefono, autofocus: true ,class:"form-control" %>
+                      <div class="row">
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :DNI %><br />
+                                <%= f.text_field :DNI, autofocus: true,:required =>"required" ,class:"form-control" %>
+                              </div>
+                          </div>
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :direccion %><br />
+                                <%= f.text_field :direccion, autofocus: true ,class:"form-control" %>
+                              </div>
+                          </div> 
                       </div>
 
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :email %><br />
-                        <%= f.email_field :email, autofocus: true ,class:"form-control" %>
-                      </div>  
-                  </div>
-                </div>
-              </div>
-              <div class="row"> 
-                <div class="container-fluid">
-                  <div class="col-xs-12 col-md-6 col-lg-6">
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :ciudad %><br />
-                        <%= f.text_field :ciudad, autofocus: true ,class:"form-control" %>
+                      <div class="row">
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :telefono %><br />
+                                <%= f.text_field :telefono, autofocus: true ,class:"form-control" %>
+                              </div>
+                          </div>
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :email %><br />
+                                <%= f.email_field :email, autofocus: true ,class:"form-control" %>
+                              </div>  
+                          </div> 
                       </div>
-
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :pais %><br />
-                        <%= f.text_field :pais, autofocus: true ,class:"form-control" %>
+                      <div class="row">
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :ciudad %><br />
+                                <%= f.text_field :ciudad, autofocus: true ,class:"form-control" %>
+                              </div>
+                          </div>
+                          <div class= "col-xs-12 col-md-6 col-lg-6">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :pais %><br />
+                                <%= f.text_field :pais, autofocus: true ,class:"form-control" %>
+                              </div>
+                          </div> 
                       </div>
-
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :edad %><br />
-                        <%= f.text_field :edad, autofocus: true ,class:"form-control" %>
-                      </div>
-
-                      <div class="field " id= "Llogin-sm">
-                        <%= f.label :genero %><br />
-                        <%= select_tag :genero, options_for_select([ "Masculino", "Femenino" ]), include_blank: true %>
+                      <div class="row">
+                          <div class= "col-xs-6 col-md-3 col-lg-3">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :edad %><br />
+                                <%= f.number_field :edad, autofocus: true ,class:"form-control" %>
+                              </div>
+                          </div>
+                          <div class= "col-xs-6 col-md-3 col-lg-3">
+                              <div class="field " id= "Llogin-sm">
+                                <%= f.label :genero %><br />
+                                <%= select_tag :genero, options_for_select([ "Masculino", "Femenino" ])%>
+                              </div>
+                          </div> 
                       </div>
 
                       <div class="field " id= "Llogin-sm">
@@ -102,27 +129,29 @@
                         <% @InteresesBase.each do |i|%>
                           <%= f.check_box :interessus, {multiple: true}%>
                           <%= i.Nombre %>
+
                         <% end %>
                       </div>
-
                       <div class="field " id= "Administrador" hidden="">
                         Seleccione el interes a administrar: <br>
                         <%= select_tag :interesadmin, options_for_select(catalogointereses) %>
-                        Seleccione su zona a administrar <br>
-                        <%= select_tag :zonaadmin, options_for_select(catalogointereses) %>
+                        <br>Seleccione su zona a administrar <br>
+                        <%= select_tag :zonaadmin, options_for_select(zona) %>
                       </div>
-                      <br>                     
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
                   <br>
                   <center><div class="actions" id= "Llogin-md">
                       <%= f.submit "Suscribirse" ,class:"btn btn-default btn-lg"%>
                         <a type="button" class="btn btn-default btn-lg" href="http://localhost:3000/">Regresar</a>
                       <% end %>
                   </div> </center>
+                  <br>
+                  </div>
+                </div> 
+            </div>
+
+
+              <div class="row">
+                  <br>
                   
                   <% if @UsuarioGeneral %>
                       <% if @UsuarioGeneral.errors.any? %>

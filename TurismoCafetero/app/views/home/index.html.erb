@@ -3,13 +3,13 @@
 <head>
 	<title></title>
 </head>
-<body class="bodyS">
+<body class="body-index">
 
 <div class = "Cabecera">
   <div class = "container-fluid">
     <div class="row">
           <div class="col-xs-12 col-md-12 col-lg-12">
-            <h1 class="Cabecera center" id="Cabecera">
+            <h1 class="Cabecera" id="Cabecera">
                 De Turismo por el Eje
             </h1>
           </div>
@@ -21,8 +21,7 @@
   <div class = "container-fluid" >
 	  <div class= "container-fluid">
 		  <div class="row">	
-			   <div class="Cabecera center">
-            
+			   <div class="Cabecera">     
             <div class="pull-right banner-btn">
               <div id="titulo">
                 <% if session[:sus] or session[:admin] or session[:root] %>
@@ -46,8 +45,8 @@
               <div id="titulo">
               <% unless session[:sus] or session[:admin] or session[:root] %>
                 <%= button_to 'Suscribirse', registro_usuarios_registro_path ,class:"btn btn-color btn-lg" %>
-              <% else %>
-                <%= button_to 'Solicitar Rol', registro_usuarios_registro_path ,class:"btn btn-color btn-lg" %>
+              <%else%>
+                <%= button_to 'Solicitar Rol', solicitar_rol_solicitud_path ,class:"btn btn-color btn-lg" %>
               <% end %>
               </div> 
             </div>
@@ -56,64 +55,79 @@
       </div>
     </div>
   </div>  
-</div>  
+</div> 
+
+
+<div style="position: relative;">
+  <div style="position: absolute; top: 120px; z-index: 1;"> 
+    <div class="row">
+      <div class="container-fluid">
+          <div class="col-md-4">
+            <div class="thumbnail">
+                  <%= image_tag "chipre.jpg"%>           
+                  <h3 id="Titulitos"><center>Mirador de Chipre</center></h3>
+                  <p id="Descripcion">
+                      Desde el Mirador de Chipre se puede tener una excelente panorámica  de la cordillera y de los nevados del Ruiz y Santa Isabel, también de  los valles de los ríos Cauca y Risaralda.
+
+                      Además allí encontrarás actividades como Columpio extremo y caminata al aire libre a una altura de 30 metros juegos mecánicos e interactivos para niños y adultos Servicio de bar, cafetería y restaurante 
+                  </p>
+            </div>    
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail">
+                  <%= image_tag "eje-cafetero.jpg"%>           
+                  <h3 id="Titulitos"><center>Eje Cafetero</center></h3>
+                  <p id="Descripcion">
+                      <br>
+                      Esta es la zona de mayor producción de café colombiano, famoso en el mundo por su sabor y calidad. Los departamentos que integran el Eje cafetero son Risaralda, Quindío y Caldas, tierras con gente cálida, hermosos paisajes, aguas termales y picos nevados. Se caracteriza por los cafetales interminables adornados de inmensas cascadas y árboles multicolores.
+                      <br>
+                  </p>
+            </div>    
+          </div>
+
+         <div class="col-md-4">
+            <div class="thumbnail">
+                  <%= image_tag "yipao.jpg"%>           
+                  <h3 id="Titulitos"><center>Desfile y Concurso de Yipao</center></h3>
+                  <p id="Descripcion">
+                      <br>
+                      En un municipio del Quindío, los habitantes del pueblo de Calarcá, parte del paisaje cultural cafetero, decoran las calles y casas con flores y adornos alusivos a las fiestas nacionales del café.Durante estas festividades en Calarcá eje cafetero se concentra en un solo evento, el desfile y concurso del yipao.  
+                      <br>
+                      <br>
+                  </p>
+            </div>    
+          </div> 
+      </div>
+    </div> 
+  </div> 
+</div> 
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-      <li data-target="#myCarousel" data-slide-to="4"></li>
-    </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
 
       <div class="item active">
         <%= image_tag ("1.jpg")%>
-        <div class="carousel-caption">
-          <h3>Armenia, Quindio</h3>
-          <p>Paisaje Cultural Cafetero</p>
-        </div>
       </div>
 
       <div class="item">
         <%= image_tag "2.jpg"%>
-        <div class="carousel-caption">
-          <h3>Cafe</h3>
-          <p>Producto de nuestra tierra!</p>
-        </div>
       </div>
     
       <div class="item">
         <%= image_tag "3.jpg"%>
-        <div class="carousel-caption">
-          <h3>Salento, Quindio</h3>
-          <p>Valle del Cocora</p>
-        </div>
       </div>
 
       <div class="item">
         <%= image_tag "4.jpg"%>
-        <div class="carousel-caption">
-          <h3>Santa Rosa de Cabal, Risaralda</h3>
-          <p>Termales</p>
-        </div>
       </div>
 
       <div class="item">
         <%= image_tag "5.jpg"%>
-        <div class="carousel-caption">
-          <h3>Manizales, Caldas</h3>
-          <p>Panoramica de la ciudad</p>
-        </div>
       </div>
 
     </div>
 </div>
-
-
 </body>
 </html>

@@ -96,8 +96,7 @@
       <%@intereses = misintereses(@Usuario.DNI)%>
       <% if @intereses != nil %>
         <%@intereses.each do |i|%>
-          <%= check_box_tag :interes %>
-          <%= i %>,
+          <label><%= i %>,</label>
         <% end %>
       <% end %>
     <% end %>
@@ -122,10 +121,10 @@
       <% end %> 
 
     <!--Boton Modificar-->
-      <%= form_for(:usuario, url: {:action => :modificar}) do |a| %>
-        <%= a.hidden_field :correo, :value => @Usuario.Correo %>         
-        <%= a.submit "Modificar",class:"btn btn-default btn-lg"%>
-      <% end %> 
+      <%= #form_for(:usuario, url: {:action => :modificar}) do |a| %>
+        <%= #a.hidden_field :correo, :value => @Usuario.Correo %>         
+        <%= #a.submit "Modificar",class:"btn btn-default btn-lg"%>
+      <% #end %> 
 
     <%end%>
   </div>

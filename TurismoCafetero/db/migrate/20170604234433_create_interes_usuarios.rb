@@ -6,6 +6,6 @@ class CreateInteresUsuarios < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_foreign_key :interes_usuarios, :usuario_generals , column: :DNI, primary_key: :DNI
+   add_foreign_key :interes_usuarios, :usuario_generals , column: :DNI, primary_key: :DNI
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517152248) do
+ActiveRecord::Schema.define(version: 20170606213549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,20 @@ ActiveRecord::Schema.define(version: 20170517152248) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "usuario_admins", force: :cascade do |t|
-    t.string   "IdAdmin"
+  create_table "marcadors", force: :cascade do |t|
+    t.string   "Nombre"
+    t.string   "Texto"
+    t.string   "Imagen"
+    t.string   "Video"
+    t.string   "Longitud"
+    t.string   "Latitud"
+    t.string   "Idadmin"
+    t.string   "Idinteres"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usuario_admins", primary_key: "IdAdmin", id: :string, force: :cascade do |t|
     t.string   "DNI"
     t.string   "Correo"
     t.string   "Password"
@@ -75,13 +87,15 @@ ActiveRecord::Schema.define(version: 20170517152248) do
 
   create_table "zonas", force: :cascade do |t|
     t.string   "Descripcion"
-    t.float    "Longitud"
-    t.float    "Latitud"
+    t.string   "Longitud"
+    t.string   "Latitud"
+    t.string   "Superficie"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_foreign_key "interes_usuarios", "usuario_generals", column: "DNI", primary_key: "DNI"
+  add_foreign_key "usuario_admins", "usuario_generals", column: "DNI", primary_key: "DNI"
   add_foreign_key "usuario_roots", "usuario_generals", column: "DNI", primary_key: "DNI"
   add_foreign_key "usuario_suscritos", "usuario_generals", column: "DNI", primary_key: "DNI"
 end

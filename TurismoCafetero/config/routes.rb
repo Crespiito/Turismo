@@ -1,5 +1,7 @@
  Rails.application.routes.draw do
 
+  get 'solicitar_rol/solicitud'
+
   get 'vista_admin/admin'
 
   get 'vista_root/root'
@@ -7,6 +9,10 @@
   get 'elegir_rol/elegir'
 
   get 'registro_usuarios/registro'
+
+  get 'ingreso/session'
+
+  get 'home/index'
 
   post 'registro_usuarios/registro'
 
@@ -20,11 +26,9 @@
 
   post 'ingreso/session'
 
-  get 'ingreso/session'
+  post 'solicitar_rol/solicitud'
 
   post 'home/index'
-
-  get 'home/index'
 
   post "home" => "home#salir"
 
@@ -56,9 +60,23 @@
 
   get "vista_admin_aceptar" => "vista_admin#volver"
 
+  post "vista_admin_contenido" => "vista_admin#agregar_contenido"
+
+  get "vista_admin_contenido" => "vista_admin#volver" 
+
+  post "vista_admin_modificar" => "vista_admin#modificar_contenido"
+
+  get "vista_admin_modificar" => "vista_admin#volver"
+
+  post "vista_admin_eliminar_contenido" => "vista_admin#eliminar_marcador"
+
+  get "vista_admin_eliminar_contenido" => "vista_admin#volver"
+
   post "vista_admin_eliminar" => "vista_admin#eliminar"
 
   get "vista_admin_eliminar" => "vista_admin#volver"
+
+  post "solicitar_rol" => "solicitar_rol#solicitar"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

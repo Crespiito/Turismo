@@ -7,4 +7,13 @@ module RegistroUsuariosHelper
 		end
 		return @lista_interes
 	end
+	
+	def zona
+		@zona = Zona.all
+		@lista_zonas =[]
+		@zona.each do |i|
+			@lista_zonas = @lista_zonas.append(i.Descripcion)
+		end
+		return @lista_zonas
+	end
 end

@@ -2,8 +2,6 @@ class IngresoController < ApplicationController
 	def create
 		@email = params[:session][:email]
 		@password = params[:session][:password]
-		session[:admin] = false
-		session[:user] = false
 
 		@userRoot = UsuarioRoot.find_by(Correo: @email, Password: @password) 
 		if @userRoot
@@ -25,6 +23,10 @@ class IngresoController < ApplicationController
 		else
 			session[:sus] = false
 		end
+
+		puts "Session root", session[:root]
+		puts "Sesion suscrito", session[:sus]
+		puts "Sesion admin", session[:admin]
 
 		if session[:sus] or session[:admin] or session[:root]
 			session[:email] = @email 
