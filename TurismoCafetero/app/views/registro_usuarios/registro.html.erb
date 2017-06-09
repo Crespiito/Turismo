@@ -49,13 +49,13 @@
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                             <div class="field " id= "Llogin-sm">
                               <%= f.label :nombre %><br />
-                              <%= f.text_field :nombre, autofocus: true ,class:"form-control" %>
+                              <%= f.text_field :nombre, autofocus: true,:required =>"required" ,class:"form-control" %>
                             </div> 
                           </div>
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                             <div class="field " id= "Llogin-sm">
                               <%= f.label :apellido %><br />
-                              <%= f.text_field :apellido, autofocus: true ,class:"form-control" %>
+                              <%= f.text_field :apellido, autofocus: true,:required =>"required" ,class:"form-control" %>
                             </div>
                           </div> 
                       </div>
@@ -64,13 +64,13 @@
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :DNI %><br />
-                                <%= f.text_field :DNI, autofocus: true,:required =>"required" ,class:"form-control" %>
+                                <%= f.number_field :DNI, autofocus: true,:required =>"required",class:"form-control" %>
                               </div>
                           </div>
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :direccion %><br />
-                                <%= f.text_field :direccion, autofocus: true ,class:"form-control" %>
+                                <%= f.text_field :direccion, autofocus: true,:required =>"required" ,class:"form-control" %>
                               </div>
                           </div> 
                       </div>
@@ -79,13 +79,13 @@
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :telefono %><br />
-                                <%= f.text_field :telefono, autofocus: true ,class:"form-control" %>
+                                <%= f.number_field :telefono, autofocus: true,:required =>"required" ,class:"form-control" %>
                               </div>
                           </div>
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :email %><br />
-                                <%= f.email_field :email, autofocus: true ,class:"form-control" %>
+                                <%= f.email_field :email, autofocus: true,:required =>"required" ,class:"form-control" %>
                               </div>  
                           </div> 
                       </div>
@@ -93,13 +93,13 @@
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :ciudad %><br />
-                                <%= f.text_field :ciudad, autofocus: true ,class:"form-control" %>
+                                <%= f.text_field :ciudad, autofocus: true,:required =>"required" ,class:"form-control" %>
                               </div>
                           </div>
                           <div class= "col-xs-12 col-md-6 col-lg-6">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :pais %><br />
-                                <%= f.text_field :pais, autofocus: true ,class:"form-control" %>
+                                <%= f.text_field :pais, autofocus: true,:required =>"required" ,class:"form-control" %>
                               </div>
                           </div> 
                       </div>
@@ -107,7 +107,7 @@
                           <div class= "col-xs-6 col-md-3 col-lg-3">
                               <div class="field " id= "Llogin-sm">
                                 <%= f.label :edad %><br />
-                                <%= f.number_field :edad, autofocus: true ,class:"form-control" %>
+                                <%= f.number_field :edad, autofocus: true,:required =>"required" ,class:"form-control" %>
                               </div>
                           </div>
                           <div class= "col-xs-6 col-md-3 col-lg-3">
@@ -149,20 +149,19 @@
                 </div> 
             </div>
 
-
               <div class="row">
-                  <br>
-                  
-                  <% if @UsuarioGeneral %>
-                      <% if @UsuarioGeneral.errors.any? %>
-                        <ul>
-                          <% @UsuarioGeneral.errors.each do |atributo, mensaje| %>
-                            <li> <%= mensaje %> </li>
-                        </ul>
-                      <% end %>
+                  <% if flash[:notice] == "si" %>
+                    <br><div class="notice">La solicitud de registro fue exitosa</div>
+                  <% end %>
+
+                  <% if flash[:notice] == "no" %>
+                    <br><div class="notice">La solicitud de registro ha fracasado</div>
+                  <% end %>
+
+                  <% if flash[:notice] == "existe" %>
+                    <br><div class="notice">Los datos que intenta registrar ya se encuentran en la plataforma</div>
                   <% end %>
               </div>
-            <% end %>
         </div>
       </div>
     </div>

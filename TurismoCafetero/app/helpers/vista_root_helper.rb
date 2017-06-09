@@ -1,11 +1,14 @@
 module VistaRootHelper
 
-	def misintereses(dni)
+	def miinteres(dni)
 		@DNI = dni
-		@intereses = InteresUsuario.find_by(DNI: @DNI)
-		if @intereses != nil
-			@interes_split = @intereses.Intereses.split("$")
-		end
-		return @interes_split
+		@intereses = UsuarioAdmin.find_by(DNI: @DNI)
+		return @intereses.Interes
+	end
+
+	def mizona(dni)
+		@DNI = dni
+		@zona = UsuarioAdmin.find_by(DNI: @DNI)
+		return @intereses.Zona
 	end
 end

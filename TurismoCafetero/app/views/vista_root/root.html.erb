@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+  <title></title>
 </head>
-<body class="bodyS">
+<body class="body-root">
 
-	<div class= "container-fluid baner">
-		<div class="row">	
-			<div class="col-xs-6 col-md-7 col-lg-7">
-				<h1 class="titulo" id="titulo">De Turismo por el Eje</h1>
-			</div>
-      <div class="col-xs-1 col-md-1 col-lg-1 banner-btn">
-      <br>
-        <div id="titulo">
-          <% if session[:sus] or session[:admin] or session[:root] %>
-				    <%= button_to 'Volver', home_index_path ,class:"btn btn-default btn-lg" %>
-          <% end %>
-        </div> 
+
+<div class = "Cabecera-root">
+  <div class = "container-fluid">
+    <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12">
+            <h1 class="Cabecera-root" id="Cabecera-root">
+                De Turismo por el Eje
+            </h1>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="baner-root">
+    <div class= "container-fluid">
+      <div class="row"> 
+         <div>     
+            <div class="pull-right banner-btn">
+              <div id="titulo">
+                <% if session[:sus] or session[:admin] or session[:root] %>
+                  <%= button_to 'Volver', home_index_path ,class:"btn btn-default btn-lg" %>
+                <% end %>
+              </div> 
+            </div> 
+
+            <div class="pull-right banner-btn">
+              <div id="titulo">
+                <% if session[:sus] or session[:admin] or session[:root] %>
+                  <%= button_to 'Cambiar Contraseña', cambiar_pass_cambio_path ,class:"btn btn-info btn-lg" %>
+                <% end %>
+              </div> 
+            </div>  
+
+          </div>
       </div>
-		</div>
-	</div>
+    </div>
+</div> 
+
+<br>
+<br>
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-xs-6 col-md-6 col-lg-6">
+  
+
+<div class="container-fluid">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 transbox-root ">
     <label for="ListaAdministradores" id="titulo"><h1>Lista de Administradores</h1></label>
         <table class="table table-hover" id="ListaAdministradores">
           <thead>
@@ -60,74 +89,60 @@
           </tbody>
         </table>
   </div>
-  <div class="col-xs-6 col-md-6 col-lg-6">
-    <label for="InformacionAdministrador" id="titulo"><h1>Informacion Del Administrador</h1></label>
-    <table class="table table-hover" id="InformacionAdministradores">
-      <thead>
-        <tr>
-          <th>DNI</th>
-          <th>Nombre</th>
-          <th>Direccion</th>
-          <th>Telefono</th>
-          <th>Ciudad</th>
-          <th>Correo</th>
-          <th>Genero</th>
-          <th>Pais</th>
-          <th>Edad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if @Usuario %>
-          <td><%= @Usuario.DNI %></td>
-          <td><%= @Usuario.Nombre %></td>
-          <td><%= @Usuario.Direccion %></td>
-          <td><%= @Usuario.Telefono %></td>
-          <td><%= @Usuario.Ciudad %></td>
-          <td><%= @Usuario.Correo %></td>
-          <td><%= @Usuario.Genero %></td>
-          <td><%= @Usuario.Pais %></td>
-          <td><%= @Usuario.Edad %></td>
-        <% end %>
-      </tbody>
-    </table>
+  <% if @Usuario %>
+  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1 transbox-root">
+          <label for="InformacionAdministrador" id="titulo"><h1>Informacion Del Administrador</h1></label>
+            <ul>  
+                <li><pre>Nombre:       <%= @Usuario.Nombre %></pre></li>
+                <li><pre>Direccion:    <%= @Usuario.Direccion %></pre></li>
+                <li><pre>Telefono:     <%= @Usuario.Telefono %></pre></li>
+                <li><pre>Ciudad:       <%= @Usuario.Ciudad %></pre></li>
+                <li><pre>Correo:       <%= @Usuario.Correo %></pre></li>
+                <li><pre>Genero:       <%= @Usuario.Genero %></pre></li>
+                <li><pre>Pais:         <%= @Usuario.Pais %></pre></li>
+                <li><pre>Edad:         <%= @Usuario.Edad %></pre></li>
+                <li><pre>Interes:      <%= miinteres(@Usuario.DNI) %></pre></li>
+                <li><pre>Zona:         <%= mizona(@Usuario.DNI) %></pre></li>
+            </ul>
+    <div class="row">
+      <%if @Usuario%>
+       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <!--Boton Aprobar-->
+          <%= form_for(:usuario, url: {:action => :aprobar}) do |a| %>
+            <%= a.hidden_field :correo, :value => @Usuario.Correo %>
+            <% if @Estado == 0 %>          
+              <%= a.submit "Aprobar",class:"btn btn-default btn-lg"%>
+            <% end %>
+          <% end %> 
+       </div>
 
-    <% if @Usuario %>
-       <label for="Intereses" id="titulo"><h1>Intereses</h1></label><br>
-      <%@intereses = misintereses(@Usuario.DNI)%>
-      <% if @intereses != nil %>
-        <%@intereses.each do |i|%>
-          <label><%= i %>,</label>
-        <% end %>
-      <% end %>
-    <% end %>
+       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <!--Boton Eliminar-->
+          <%= form_for(:usuario, url: {:action => :eliminar}) do |a| %>
+            <%= a.hidden_field :correo, :value => @Usuario.Correo %>
+            <% if @Eliminado == 0 %>          
+              <%= a.submit "Habilitar",class:"btn btn-default btn-lg"%>
+            <% else %>
+              <%= a.submit "Inhabilitar",class:"btn btn-default btn-lg"%>
+            <% end %>
+          <% end %> 
+       </div>
 
-    <%if @Usuario%>
-    <!--Boton Aprobar-->
-      <%= form_for(:usuario, url: {:action => :aprobar}) do |a| %>
-        <%= a.hidden_field :correo, :value => @Usuario.Correo %>
-        <% if @Estado == 0 %>          
-          <%= a.submit "Aprobar",class:"btn btn-default btn-lg"%>
-        <% end %>
-      <% end %> 
-
-    <!--Boton Eliminar-->
-      <%= form_for(:usuario, url: {:action => :eliminar}) do |a| %>
-        <%= a.hidden_field :correo, :value => @Usuario.Correo %>
-        <% if @Eliminado == 0 %>          
-          <%= a.submit "Habilitar",class:"btn btn-default btn-lg"%>
-        <% else %>
-          <%= a.submit "Inhabilitar",class:"btn btn-default btn-lg"%>
-        <% end %>
-      <% end %> 
-
-    <!--Boton Modificar-->
-      <%= #form_for(:usuario, url: {:action => :modificar}) do |a| %>
-        <%= #a.hidden_field :correo, :value => @Usuario.Correo %>         
-        <%= #a.submit "Modificar",class:"btn btn-default btn-lg"%>
-      <% #end %> 
-
-    <%end%>
+       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <!--Boton Modificar-->
+          <% form_for(:usuario, url: {:action => :modificar}) do |a| %>
+            <% a.hidden_field :correo, :value => @Usuario.Correo %>         
+            <% a.submit "Modificar",class:"btn btn-default btn-lg"%>
+          <% end %> 
+       </div>
+        <%end%>
+      </div>
+  <br>
+  <br>
   </div>
+  </div>
+<% end %>
+</div>
   </div>
 </div> 
 </body>

@@ -29,9 +29,9 @@
     <h3>A Donde Ir</h3>
     <div id="map"></div>
 
-    <input type="hidden" id="posicion_lat" value="<%= @marcs[@i].Latitud%>">
-    <input type="hidden" id="posicion_lon" value="<%= @marcs[@i].Longitud%>">
     <input type="hidden" id="tamaño" value="<%= @marcs.length%>">
+    <input type="hidden" id="posicion_lat" value="">
+    <input type="hidden" id="posicion_lon" value="">
     <script>
           function initMap() {
           var uluru = {lat: 4.784079, lng: -75.689205};
@@ -47,6 +47,12 @@
           var tamaño = parseFloat(document.getElementById("tamaño").value);
           while(i < tamaño){
             <% while @i < @marcs.length %>
+            if (i < tamaño){
+                <% if @i < @marc.length %> 
+                  document.getElementById("posicion_lon").value = "<%= @marc[@i].Longitud%>";
+                  document.getElementById("posicion_lat").value = "<%= @marc[@i].Latitud%>";
+                <% end %>
+              }
             var posicion_lat = parseFloat(document.getElementById("posicion_lat").value);
             var posicion_log = parseFloat(document.getElementById("posicion_lon").value);
             var posicion = {lat: posicion_lat, lng: posicion_log};
@@ -57,18 +63,41 @@
               title: 'Uluru (Ayers Rock)'
             });
 
-            contentString[i] = '<div id="content">'+
-              '<div id="siteNotice">'+
-              '</div>'+
-              '<h1 id="firstHeading" class="firstHeading">Prueba contenido de marcadores</h1>'+
-              '<div id="bodyContent">'+
-              '<p><%= @marcs[@i].Texto %></p>'+
-              '<img src = <%= @marcs[@i].Imagen%> >'+
-              '<iframe width="420" height="315"'+
-            'src="https://www.youtube.com/embed/B9FzVhw8_bY">'+
-              '</iframe>'+ 
-              '</div>'+
-              '</div>';
+            <% if @marc[@i].Imagen == "" %>
+                <%@marc[@i].Imagen = "http://img.rtve.es/css/i/blank.gif" %>
+              <%end%>
+              
+            <% if @marc[@i].Video == "http://img.rtve.es/css/i/blank.gif" %>
+              <% @width_video = 1 %>
+              <% @height_video = 1 %>
+            <% else %>
+              <% @width_video = 420 %>
+              <% @height_video = 315 %>
+            <% end %>
+
+            <% if @marc[@i].Imagen == "http://img.rtve.es/css/i/blank.gif" %>
+              <% @width = 1 %>
+              <% @height = 1 %>
+            <% else %>
+              <% @width = 420 %>
+              <% @height = 315 %>
+            <% end %>
+
+              contentString[i] = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h1 id="firstHeading" class="firstHeading"><%= @marc[@i].Nombre %></h1>'+
+                '<div id="bodyContent">'+
+                '<p><%= @marc[@i].Texto %></p>'+
+                '<img src = <%=@marc[@i].Imagen%> width=<%= @width %> height=<%= @height %> >'+
+                '<center><iframe width=<%= @width_video %> height=<%= @height_video %> '+
+              'src= <%=@marc[@i].Video%>>'+
+                '</iframe></center>'+ 
+                '</div>'+
+                '</div>';
+
+
+
             
 
             infowindow[i] = new google.maps.InfoWindow({
@@ -83,13 +112,6 @@
 
             i=i+1;
             <% @i = @i+1 %>;
-            if (i < tamaño){
-              <% if @i < @marcs.length %> 
-                document.getElementById("posicion_lon").value = "<%= @marcs[@i].Longitud%>";
-                document.getElementById("posicion_lat").value = "<%= @marcs[@i].Latitud%>";
-              <% end %>
-            }
-            
             <% end %>
           } 
 

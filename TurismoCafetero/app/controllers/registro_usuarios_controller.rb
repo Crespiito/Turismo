@@ -16,10 +16,20 @@ class RegistroUsuariosController < ApplicationController
 
   	def traducirintereses(interesescheck)
   		@lista_interes = interesescheck
+
+  		j = 0
+  		while j < @lista_interes.length
+	  		if @lista_interes[j] == '1'
+	  			@lista_interes[j-1] = '1'
+	  			@lista_interes.delete_at(j)
+	  		end
+	  		j = j+1
+  		end
+  		
   		i = 0
   		@interes_usuario= ""
   		while i < @InteresesBase.length
-  			if @lista_interes[2*i+1]== '1'
+  			if @lista_interes[i]== '1'
   				@interes_usuario = @InteresesBase[i].Nombre+"$"+@interes_usuario
   			end
   			i = i + 1
@@ -55,7 +65,8 @@ class RegistroUsuariosController < ApplicationController
 			})
 		
 		if UsuarioGeneral.exists?(DNI:@DNI) or UsuarioGeneral.exists?(Correo: @Correo)
-			render registro_usuarios_registro_path
+			flash[:notice] = "existe"
+	      	redirect_to registro_usuarios_registro_path
 		else 
 			@UsuarioGeneral.save
 
@@ -95,10 +106,18 @@ class RegistroUsuariosController < ApplicationController
 			end
 
 			if @UsuarioGeneral.save and @UsuarioAdmin != nil
-	      		redirect_to home_index_path, :notice => "El registro ha sido eviado";
+	      		flash[:notice] = "si"
+	      		redirect_to registro_usuarios_registro_path
+	      	else
+	      		flash[:notice] = "no"
+	      		redirect_to registro_usuarios_registro_path
 	   		end
 	   		if @UsuarioGeneral.save and @UsuarioSuscrito != nil
-	      		redirect_to home_index_path, :notice => "El registro ha sido eviado";
+	      		flash[:notice] = "si"
+	      		redirect_to registro_usuarios_registro_path
+	      	else
+	      		flash[:notice] = "no"
+	      		redirect_to registro_usuarios_registro_path
 	   		end
 		end 
 	end

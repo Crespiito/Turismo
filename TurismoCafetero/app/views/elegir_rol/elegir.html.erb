@@ -17,7 +17,7 @@
 
   <div class="container-fluid">
       <div class="container-fluid "> 
-          <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4 baner-eleccion">
+          <div class="col-xs-8 col-md-6 col-lg-4 col-xs-offset-2 col-md-offset-3 col-lg-offset-4 ban-eleccion">
               <div class ="row justify-content-center">
 
               	<div class ="col-xs-12 col-md-12 col-lg-12">
@@ -29,7 +29,7 @@
               <div class ="row justify-content-center">
               		<div class ="col-xs-12 col-md-12 col-lg-12">
 							<% if session[:root] %>
-                    <div id ="root" class="row baner-root">
+                    <div id ="root" class="row ban-root">
 								          <center><%= button_to 'Root', vista_root_root_path ,class:"btn btn-danger btn-lg" %>
                     </div>
 
@@ -52,7 +52,7 @@
 
 							<%end%>
 							<% if session[:admin] %>
-                    <div id ="admin" class="row baner-admin">
+                    <div id ="admin" class="row ban-admin">
 								        <center><%= button_to 'Administrador', vista_admin_admin_path ,class:"btn btn-info btn-lg" %>
                     </div>
 
@@ -76,7 +76,7 @@
 							<% end %>
 						
 							<% if session[:sus] %>
-                    <div id ="sus" class="row baner-sus">
+                    <div id ="sus" class="row ban-sus">
 							           <center><%= button_to 'Suscrito', vista_suscrito_suscrito_path ,class:"btn btn-default btn-lg" %>
                     </div>
 

@@ -1,5 +1,7 @@
  Rails.application.routes.draw do
 
+  get 'cambiar_pass/cambio'
+
   get 'solicitar_rol/solicitud'
 
   get 'vista_admin/admin'
@@ -13,6 +15,8 @@
   get 'ingreso/session'
 
   get 'home/index'
+
+  post 'cambiar_pass/cambio'
 
   post 'registro_usuarios/registro'
 
@@ -77,6 +81,8 @@
   get "vista_admin_eliminar" => "vista_admin#volver"
 
   post "solicitar_rol" => "solicitar_rol#solicitar"
+
+  post "cambiar_pass" => "cambiar_pass#cambio_pass"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

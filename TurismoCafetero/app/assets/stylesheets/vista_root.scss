@@ -1,3 +1,69 @@
 // Place all the styles related to the Vista_root controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+
+@-webkit-keyframes movimiento-diagonal {
+   from {
+      top: 0px;
+   }
+   
+   to {
+      top: 40px;
+   }
+}
+
+
+body.bodyS{
+  background-color: #f7f7f7;
+}
+
+h1.Cabecera-root{
+    -webkit-animation-name: movimiento-diagonal;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;/*para que vuelva a su posicion inicial */
+    position: relative;
+    color: #09424b;
+    text-align: center;
+}
+
+#Cabecera-root{
+
+    font-style: normal;
+    font-family: 'Lobster', cursive;
+    font-size: 65px;
+
+}
+.Cabecera-root{
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+
+}
+
+.baner-root{
+	background-color: #474747;	
+	box-sizing: border-box;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	}
+
+body.body-root{
+  background-image: url(imagenes/fondo-root.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+div.transbox-root {
+    background-color: #f7f7f7;
+    opacity: 0.8;
+    border-radius: 10px;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}

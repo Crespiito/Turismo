@@ -80,22 +80,22 @@
 	           <input type="hidden" id="superficie" value="<%= @zona.Superficie %>">
 	           <input type="hidden" id="latitud" value="<%= @zona.Latitud %>">
 	           <input type="hidden" id="longitud" value="<%= @zona.Longitud %>">
-	           <input type="hidden" id="posicion_lat" value="<%= @marc[@i].Latitud%>">
-	           <input type="hidden" id="posicion_lon" value="<%= @marc[@i].Longitud%>">
 	           <input type="hidden" id="tamaño" value="<%= @marc.length%>">
+	           <input type="hidden" id="posicion_lat" value="">
+	           <input type="hidden" id="posicion_lon" value="">
 	          </tbody>
 	        </table>
 	  	<div class="row">
 	  		<div class="col-xs-6 col-md-6 col-lg-6" id="Marcador" hidden="">
 	  			<%= form_for(:marcador, url: {:action => :agregar_contenido}) do |f| %>
 	  				<p>Ingrese el nombre</p>
-	  				<%= f.text_field :nombre, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :nombre, autofocus: true, autocomplete: "off"  ,class:"form-control" %>
 	  				<p>Ingrese el texto</p>
-	  				<%= f.text_field :texto, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :texto, autofocus: true , autocomplete: "off" ,class:"form-control" %>
 	  				<p>Ingrese el link de la imagen</p>
-	  				<%= f.text_field :imagen, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :imagen, autofocus: true , autocomplete: "off" ,class:"form-control" %>
 	  				<p>Ingrese el link de video(Solo Youtube)</p>
-	  				<%= f.text_field :video, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :video, autofocus: true , autocomplete: "off" ,class:"form-control" %>
 	  				<%= f.hidden_field :longitud, :value => "" %>
 	  				<%= f.hidden_field :latitud, :value => "" %>
 	  				<%= f.submit "Guardar", class:"btn btn-default btn-lg"%>
@@ -104,21 +104,21 @@
 	  		<div class="col-xs-6 col-md-6 col-lg-6" id="Modificar" hidden="">
 	  			<%= form_for(:modificar, url: {:action => :modificar_contenido}) do |f| %>
 	  				<p>Modificar el titulo</p>
-	  				<%= f.text_field :nom, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :nom, autofocus: true, autocomplete: "off" ,class:"form-control" %>
 	  				<p>Modificar el texto</p>
-	  				<%= f.text_field :tex, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :tex, autofocus: true , autocomplete: "off" ,class:"form-control" %>
 	  				<p>Modificar el link de la imagen</p>
-	  				<%= f.text_field :img, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :img, autofocus: true , autocomplete: "off" ,class:"form-control" %>
 	  				<p>Modificar el link de video(Solo Youtube)</p>
-	  				<%= f.text_field :vid, autofocus: true ,class:"form-control" %>
+	  				<%= f.text_field :vid, autofocus: true , autocomplete: "off" ,class:"form-control" %>
 	  				<%= f.submit "Modificar", class:"btn btn-default btn-lg"%>
 	  				<%= f.hidden_field :id, :value => "" %>
 	  			<% end %>
 	  			<%= form_for(:eliminar, url: {:action => :eliminar_marcador}) do |f| %>
 	  				<%= f.hidden_field :id, :value => "" %>
 	  				<%= f.submit "Eliminar", class:"btn btn-default btn-lg"%>
-	  				<button class="btn btn-info btn-lg" onclick ="Volver()">Volver</button>
 	  			<% end %>
+	  			<button class="btn btn-info btn-lg" onclick ="Volver()">Volver</button>
 	  		</div>
 	  	</div>
 	  	</div>
@@ -146,54 +146,71 @@
 				  var tamaño = parseFloat(document.getElementById("tamaño").value);
 				  while(i < tamaño){
 				  	<% while @i < @marc.length %>
-				  	var posicion_lat = parseFloat(document.getElementById("posicion_lat").value);
-				  	var posicion_log = parseFloat(document.getElementById("posicion_lon").value);
-				  	var posicion = {lat: posicion_lat, lng: posicion_log};
-				  	marker[i] = new google.maps.Marker({
-				  		id: i,
-				    	position: posicion,
-				    	map: map,
-				    	title: 'Uluru (Ayers Rock)'
-				  	});
+					  	if (i < tamaño){
+					  		<% if @i < @marc.length %> 
+					  			document.getElementById("posicion_lon").value = "<%= @marc[@i].Longitud%>";
+					  			document.getElementById("posicion_lat").value = "<%= @marc[@i].Latitud%>";
+					  		<% end %>
+					  	}
+					  	var posicion_lat = parseFloat(document.getElementById("posicion_lat").value);
+					  	var posicion_log = parseFloat(document.getElementById("posicion_lon").value);
+					  	var posicion = {lat: posicion_lat, lng: posicion_log};
+					  	marker[i] = new google.maps.Marker({
+					  		id: i,
+					    	position: posicion,
+					    	map: map,
+					    	title: 'Uluru (Ayers Rock)'
+					  	});
 
-				  	<% if @marc[@i].Imagen == "" %>
-				  		<%@marc[@i].Imagen = "http://img.rtve.es/css/i/blank.gif" %>
-				  	<%end%>
-				    contentString[i] = '<div id="content">'+
-				      '<div id="siteNotice">'+
-				      '</div>'+
-				      '<h1 id="firstHeading" class="firstHeading"><%= @marc[@i].Nombre %></h1>'+
-				      '<div id="bodyContent">'+
-				      '<p><%= @marc[@i].Texto %></p>'+
-				      '<img src = <%=@marc[@i].Imagen%> >'+
-				      '<center><iframe width="420" height="315"'+
-					  'src= <%=@marc[@i].Video%>>'+
-				      '</iframe></center>'+ 
-				      '</div>'+
-				      '</div>';
-				    
+					  	<% if @marc[@i].Imagen == "" %>
+					  		<%@marc[@i].Imagen = "http://img.rtve.es/css/i/blank.gif" %>
+					  	<%end%>
+					    
+					    <% if @marc[@i].Video == "http://img.rtve.es/css/i/blank.gif" %>
+							<% @width_video = 1 %>
+							<% @height_video = 1 %>
+						<% else %>
+							<% @width_video = 420 %>
+							<% @height_video = 315 %>
+						<% end %>
 
-				    infowindow[i] = new google.maps.InfoWindow({
-				    content: contentString[i]
-				  	});
+						<% if @marc[@i].Imagen == "http://img.rtve.es/css/i/blank.gif" %>
+							<% @width = 1 %>
+							<% @height = 1 %>
+						<% else %>
+							<% @width = 420 %>
+							<% @height = 315 %>
+						<% end %>
 
-				  	marker[i].addListener('click', function() {
-				    infowindow[this.id].open(map, this);
-				    $("#Modificar").show();
-				    $("#Marcador").hide();
-				    document.getElementById("modificar_id").value = this.id;
-				    document.getElementById("eliminar_id").value = this.id;
-				  	});
+					    contentString[i] = '<div id="content">'+
+					      '<div id="siteNotice">'+
+					      '</div>'+
+					      '<h1 id="firstHeading" class="firstHeading"><%= @marc[@i].Nombre %></h1>'+
+					      '<div id="bodyContent">'+
+					      '<p><%= @marc[@i].Texto %></p>'+
+					      '<img src = <%=@marc[@i].Imagen%> width=<%= @width %> height=<%= @height %> >'+
+					      '<center><iframe width=<%= @width_video %> height=<%= @height_video %> '+
+						  'src= <%=@marc[@i].Video%>>'+
+					      '</iframe></center>'+ 
+					      '</div>'+
+					      '</div>';
 
-				  	i=i+1;
-				  	<% @i = @i+1 %>;
-				  	if (i < tamaño){
-				  		<% if @i < @marc.length %> 
-				  			document.getElementById("posicion_lon").value = "<%= @marc[@i].Longitud%>";
-				  			document.getElementById("posicion_lat").value = "<%= @marc[@i].Latitud%>";
-				  		<% end %>
-				  	}
-				  	
+					    
+
+					    infowindow[i] = new google.maps.InfoWindow({
+					    content: contentString[i]
+					  	});
+
+					  	marker[i].addListener('click', function() {
+					    infowindow[this.id].open(map, this);
+					    $("#Modificar").show();
+					    $("#Marcador").hide();
+					    document.getElementById("modificar_id").value = this.id;
+					    document.getElementById("eliminar_id").value = this.id;
+					  	});
+
+					  	i=i+1;
+					  	<% @i = @i+1 %>;
 				  	<% end %>
 				  }	
 				  
